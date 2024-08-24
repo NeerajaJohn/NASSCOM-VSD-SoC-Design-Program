@@ -41,12 +41,25 @@
       ![image](https://github.com/user-attachments/assets/2886adc8-805c-4041-aa14-9df273cdfbcd)
 
    - <details>
-      <summary>SKY_L3 - From Software Applications to Hardware</strong></summary>
+      <summary><strong>SKY_L3 - From Software Applications to Hardware</strong></summary>
      
-      **Notes :- **
+      **Notes: -**
       The Applications that we use in our computer is actually run on the chip hardware present inside. The applications (written in any language like java, c++) enters into a system software and the software converts the program/app into binary language form. The various levels/layers of systwm software in this flow is Operating System, Compiler and Assembler.
      Apart from the other jobs of OS( like Handling IO operations, Allocatiing memory etc), the majot job of OS is to compile and convert to assembly language and finally to binary form to be understood by the machine.
       ![image](https://github.com/user-attachments/assets/06d5d18f-d225-419a-9981-d14e98f7a1e1)
+     An example flow is as below:
+     
+     Any C/C++/VB/JAVA function --> respective language compiler --> converted into hardware based instruction set--> assembler --> hexa representation of instructions(binary form. .exe file) --> enter chip--> hardware responds as per incoming bitstream.
+ 
+     The syntax of the instruction set at compiler output is dependent on hardware architecture. E.g., for x86, ARM, RISC V types of hardware, the instruction set will also be in x86, ARM, RISC V format respectively. The final output binary pattern decides what should be the hardware should be doing. 
+     ![image](https://github.com/user-attachments/assets/5de5d1bb-0d69-4bbb-8be5-9e1a19044727)
+     An example of a C input program compiled into instructions is given below:
+     ![image](https://github.com/user-attachments/assets/1b83de11-85f1-446d-a577-dcc865f9807a)
+     The instruction set acts as an abstract interface bewtween the C language function and the hardware. So we can say that
+     ![image](https://github.com/user-attachments/assets/5689de20-b96b-4032-8b65-a6696927a8f6)
+
+     ![image](https://github.com/user-attachments/assets/30d9357e-11b7-49f5-bf59-a55996750b75)
+
 
   </details>
 
