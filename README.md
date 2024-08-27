@@ -70,7 +70,19 @@ Another important interface between Functon and hardware is the RTL language. Th
       <summary><strong>SKY_L1 - Introduction to all components of open-source digital asic design</strong></summary>
     
       **Notes: -**
-  
+      
+      Designing ASICS requires RTL IPs, EDA Tools and PDK Kits. 100% open source ASIC design is possible due to open source RTL designs(librecores,.org, opencores.org, github.com) and EDA Tools(Qflow, OpenROAD, OpenLANE) and opensource PDK(Foss 130nm PDK)
+      
+      **PDKs: -**
+      In earlier days, design of IC was tightly with manufacturing processeces available within each company. Later, the design was seperated from technology leading to structured design methodolgy based on λ - based rules. This gave way to Pure Lay Fabs and Fabless design companies. The interface between designers and the FAB became a set of files called PDK(Process Design Kits)
+      
+      PDKs include collection of files used to model a fabrication process for the EDA tools used an IC.
+        - Process design Rules: DRC, LVS, PEX
+        - Device Models
+        - Digital Standard Cell Libraries
+        - I/O Libraries ...
+   
+      Google and skywater together agreed to open source the PDK for the 130nm process by skywater. AS a result, in June 2020, Google released the first open sourced PDK in the market: FOSS 130nm Production PDK. 130 nm process is still relevant because of its application in many processes. Intel P4EE used 130nm process. 
 
       </details>
       
