@@ -90,7 +90,10 @@ Another important interface between Functon and hardware is the RTL language. Th
       <summary><strong>SKY_L2 - Simplified RTL2GDS flow</strong></summary>
     
       **Notes: -**
-
+      The major steps in RTL to GDS flow is shown below:
+      ![image](https://github.com/user-attachments/assets/7e84c208-90fd-46aa-a0db-ef8b64923b25)
+      1. Synthesis: Converts RTL to circuit using components from Standard Cell Library
+      2. 
 
       </details>
       
