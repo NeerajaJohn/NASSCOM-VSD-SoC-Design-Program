@@ -92,8 +92,22 @@ Another important interface between Functon and hardware is the RTL language. Th
       **Notes: -**
       The major steps in RTL to GDS flow is shown below:
       ![image](https://github.com/user-attachments/assets/7e84c208-90fd-46aa-a0db-ef8b64923b25)
-      1. Synthesis: Converts RTL to circuit using components from Standard Cell Library
-      2. 
+      1. Synthesis: Converts RTL to circuit using components from Standard Cell Library. Resulting file is gatelevel netlist
+      2. Floor and Power planning:
+         Different for macros and chips
+          - Chip FLoor planning: partition thr chip die between different system buliding blocks and place the I/O pads
+          - Macros FLoor planning:  decide macro dimensions, pin locations, row definitions etc
+            
+         In power planning, the power network is constructed, through horizontal and vertical rings to reduce resistance and address electromagnetition problem
+      4. Placement : Place gatelevel netlist cells on rows such as to reduce interconnect length
+   
+         Global placement: optimal position is found for all cells, not necesssarily on rule
+         
+         Detailed placement: obeys rules
+         
+      6. Clock Tree Synthesis: Create clock distribution network to deliver clock to all sequential elements, with minimum skew and good shape(H tree, X tree etc)
+      7. Routing: Signal routing develops patterns of horizontal and vertical metal patterns to connect different cells(PDK defines features of the nets). Uses divide and conquer method for forming the routing grid. GLobal routing generates routing guides, followed by detailed routing t implement actual routing.
+      8. SignOff:
 
       </details>
       
