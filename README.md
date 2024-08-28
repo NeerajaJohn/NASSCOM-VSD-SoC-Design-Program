@@ -186,11 +186,52 @@ Another important interface between Functon and hardware is the RTL language. Th
     This contains working date's folder, inside which we can find the required files created now for the flow
     ![image](https://github.com/user-attachments/assets/c6c6cb3c-bb22-4c68-9677-099dd196ba28)
     
+    We can use the following comand in another terminal to inspect the resulting config file. The advantage of openlane is that we can change the configurations on the fly. (use q button to close files opened in terminal using less command)
+    ```bash
+    ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-544 less config.tcl
+    ```
+    Next step is synthesis
+    ```bash
+    run_synthesis
+    ```
+    ![image](https://github.com/user-attachments/assets/726f341a-2708-452b-9210-674aaf456d69)
     
-  - k
+  - SKY_L4 - OpenLANE Project Git Link Description
+  - 
+    All the information regarding openlane can be found in the github page: openlane efabless.
 
-  - k
+    Another resource is fossi dial up youtube video.
+ 
+  - SKY_L5 - Steps to characterize synthesis results
 
+    ![image](https://github.com/user-attachments/assets/a6008b60-5c73-4936-9fd7-aac138fb2e25)
+
+    ```math
+    No. of DFF = 1613
+    ```
+    ```math
+    No. of cells =\ 14876
+    ```
+    ```math
+    Flop\ ratio =\ 1613/14876
+    ```    
+    ```math
+    = 0.108429685 = 10.84 \%
+    ```
+    Synthesized netlist
+    ```bash
+    ~~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-544/results/synthesis$ less picorv32a.synthesis.v
+    ```
+    ![image](https://github.com/user-attachments/assets/1993ede8-b712-4906-ba49-85f1279622a4)
+    
+    Report after synthesis:
+ 
+    ![image](https://github.com/user-attachments/assets/3093bdf6-be3e-4d27-80e4-7b0f34cb2f4f)
+
+    ```bash
+    ~~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-544/reports/synthesis$ less 1-yosys_4.stat.rpt
+    ```
+    ![image](https://github.com/user-attachments/assets/e05cfb95-2316-4a35-8c35-2ea28c3dc2ef)
 
 
   </details>
