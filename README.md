@@ -107,7 +107,7 @@ Another important interface between Functon and hardware is the RTL language. Th
          
       6. Clock Tree Synthesis: Create clock distribution network to deliver clock to all sequential elements, with minimum skew and good shape(H tree, X tree etc)
       7. Routing: Signal routing develops patterns of horizontal and vertical metal patterns to connect different cells(PDK defines features of the nets). Uses divide and conquer method for forming the routing grid. GLobal routing generates routing guides, followed by detailed routing t implement actual routing.
-      8. SignOff:
+      8. SignOff: Includes physical verification( by design rule checking and Layout vs schematic verification) and timing verification(Static Timing Analysis)
 
       </details>
       
@@ -116,8 +116,17 @@ Another important interface between Functon and hardware is the RTL language. Th
  
       **Notes: -**
 
-      - k
-      - k
+      With release of opensource PDK, e-fabless decided to create a reference opensource ASIC implementation methodology and flow called OPENLANE. It comes with APACHE 2.0 and is available in github.
+ 
+      OpenLANE started as a True open source Tape out experiment. At e Fabless, there is a family of SoCs called striVe with open PDK, open EDA and open RTL (open Everything). Example members with various features is given below.
+      
+      ![image](https://github.com/user-attachments/assets/e9cb9eaf-f610-45bc-a0cf-657d92f0b96d)
+
+      Main goal of openLANE is to produce a clean(no LVS, DRS violayions) GDSII with no human intervention. It is tuned for SkyWater 130nm Open PDK. It is containerilzed(functional out of the box). It can be used to harden macros and chips(to generate final layout).
+
+      It has two modes of operations : Autonomous or interactive. OpenLANE has design space exporation to find the best set of flow configurations. 
+
+      OpenLANE comes with many design examples. 
     
       </details>
       
@@ -125,8 +134,14 @@ Another important interface between Functon and hardware is the RTL language. Th
       <summary><strong>SKY_L4 - Introduction to OpenLANE detailed ASIC design flow</strong></summary>
  
       **Notes: -**
-      - k
-      - k
+      OpenLANE ASIC flow:
+       
+      The design flow starts at Design RTL and ends at GDSII file taking the SKY130 PDK as input function.
+ 
+      OpenLANE is based on several opensource projects like OpenROAD, Magic VLSI Layout Tool, K Layout, Fault, Yosysy, QFlow and ABC.
+      ![image](https://github.com/user-attachments/assets/aedd1fff-5d2e-4552-813c-76f6c3d32f60)
+      
+      The OpenLANE has Synthesis exploration to explore different strategies for best area and delay outputs. It has also more than 35 Design Exploration to get best design configuration, best result and clean layout. The design exploration utility is also used for regression testing. We run OpenLane on ~70 designs and compare the results. There is Design for Test option by Fault. 
     
       </details>
       
@@ -135,7 +150,47 @@ Another important interface between Functon and hardware is the RTL language. Th
 - <details>
   <summary><strong>SKY130_D1_SK3 - Get familiar with open-source EDA tools</strong></summary>
 
+  - SKY_L1 - OpenLANE Directory structure in detail
+    
+      ![image](https://github.com/user-attachments/assets/d710bd2e-48dd-4147-824d-fcaf0b75994c)
+
+      ![image](https://github.com/user-attachments/assets/e71f311e-4821-4c06-9d5a-c7da11a6209c)
+ 
+  - SKY_L2 - Design Preparation Step
+
+    Change directory :
+    ```bash
+    cd Desktop/work/tools/openlane_working_dir/openlane          
+    ```
+    Invoke openlane
+    ```bash
+    ~/Desktop/work/tools/openlane_working_dir/openlane$ docker
+    ```
+    This will invoke the efabless openlane flow contained sub system docker. Now we use interactive flow.tcl method(or else it will run complete flow at once)
+    ```bash
+    bash-4.2$ ./flow.tcl -interactive
+    ```
+    ![image](https://github.com/user-attachments/assets/dc732b61-60a2-4ff2-bbbe-7c1c0ad61f19)
+    Now we give required package and then prepare the design to have required files(like RTL src file and sdc files and config files etc). So we point to the required design file . e.g. picorv32
+    ```bash
+    % package require openlane 0.9
+
+    % prep -design picorv32a
+    ```
+    ![image](https://github.com/user-attachments/assets/02d0821d-104e-4607-af9f-eb603eee02c9)
+
+  - SKY_L3 - Review files after design prep and run synthesis
+    ```bash
+    cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs
+    ```
+    This contains working date's folder, inside which we can find the required files created now for the flow
+    ![image](https://github.com/user-attachments/assets/c6c6cb3c-bb22-4c68-9677-099dd196ba28)
+    
+    
   - k
+
   - k
+
+
 
   </details>
