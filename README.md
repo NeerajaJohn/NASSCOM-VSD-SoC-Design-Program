@@ -242,23 +242,51 @@ Another important interface between Functon and hardware is the RTL language. Th
   
    - <details>
       <summary><strong>SKY_L1 - Utilization factor and aspect ratio</strong></summary>
+     
       ![image](https://github.com/user-attachments/assets/174643f3-7a9f-4a95-8628-5d2923bad597)
 
    - <details>
       <summary><strong>SKY_L2 - Concept of pre-placed cells</strong></summary>
+     
       ![image](https://github.com/user-attachments/assets/a8e3e6a1-2234-409a-bf90-856f8fc719d0)
+     
       ![image](https://github.com/user-attachments/assets/b03fca08-c1cf-4b38-bfc4-6fb8448669c6)
+     
       ![image](https://github.com/user-attachments/assets/90cfdeeb-78da-4d2b-b95d-7e3023bfea12)
 
 
    - <details>
       <summary><strong>SKY_L3 - De-coupling capacitors</strong></summary>
+     
       ![image](https://github.com/user-attachments/assets/52087f4f-e86d-4a65-8458-28b90f547d0c)
+
+      ![image](https://github.com/user-attachments/assets/99b494ca-4b5a-48b9-aae8-e2f94234785e)
+
+      Whenever there is a switching activity, the decoupling capacitor provides some charge to the circuit. When there is no switching activity, this capacitor replenishes its charge. In chip, it is places as shown below:
+
+      ![image](https://github.com/user-attachments/assets/f1473092-d82b-4d50-aaf9-7574475afc36)
+
+      Decoupling helps to avoid power loss and cross talk
 
      
    - <details>
       <summary><strong>SKY_L4 - Power planning</strong></summary>
-      gfhfghf
+     Just like a macro requires decoupling capacitor to provide for sudden voltage requirement as well as discharge scenarios, the whole chip with lots of macros require adjacent Vdd and Vss to maintain the signal shape from driver to load. Avoiding ground bounce and voltage droop outside noise margin is difficult with single tap source.
+ 
+     The proble of single source and a possible solution is given below:
+     
+
+     <p float="left">       
+        <img src="https://github.com/user-attachments/assets/2bb2aeea-c81c-4369-bf0f-14eff222a0d5" alt="Alt text" width="300" />        
+        <img src="https://github.com/user-attachments/assets/e5e1d1f3-e5b1-436c-bab0-f40532fd2806" alt="Alt text" width="300" />
+     
+      </p>   
+   
+
+     To place chip components near to source and ground, modern chips use power mesh fro source as well as ground so that any sudden requirement of charging or discharging can be addressed by the nearest power/ground points.
+
+    ![image](https://github.com/user-attachments/assets/fadb62f7-22f6-40fb-bfaf-62d96c6af4ed)
+
      
    - <details>
       <summary><strong>SKY_L5 - Pin placement and logical cell placement blockage</strong></summary>
