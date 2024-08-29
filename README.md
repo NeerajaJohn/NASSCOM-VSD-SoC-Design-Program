@@ -197,7 +197,7 @@ Another important interface between Functon and hardware is the RTL language. Th
     ![image](https://github.com/user-attachments/assets/726f341a-2708-452b-9210-674aaf456d69)
     
   - SKY_L4 - OpenLANE Project Git Link Description
-  - 
+   
     All the information regarding openlane can be found in the github page: openlane efabless.
 
     Another resource is fossi dial up youtube video.
@@ -235,3 +235,46 @@ Another important interface between Functon and hardware is the RTL language. Th
 
 
   </details>
+#### Sky130 Day 2 - Good floorplan vs bad floorplan and introduction to library cells
+
+- <details>
+  <summary><strong>SKY130_D2_SK1 - Chip Floor planning considerations</strong></summary>
+  
+   - <details>
+      <summary><strong>SKY_L1 - Utilization factor and aspect ratio</strong></summary>
+      ![image](https://github.com/user-attachments/assets/174643f3-7a9f-4a95-8628-5d2923bad597)
+
+   - <details>
+      <summary><strong>SKY_L2 - Concept of pre-placed cells</strong></summary>
+      ![image](https://github.com/user-attachments/assets/a8e3e6a1-2234-409a-bf90-856f8fc719d0)
+      ![image](https://github.com/user-attachments/assets/b03fca08-c1cf-4b38-bfc4-6fb8448669c6)
+      ![image](https://github.com/user-attachments/assets/90cfdeeb-78da-4d2b-b95d-7e3023bfea12)
+
+
+   - <details>
+      <summary><strong>SKY_L3 - De-coupling capacitors</strong></summary>
+      ![image](https://github.com/user-attachments/assets/52087f4f-e86d-4a65-8458-28b90f547d0c)
+
+     
+   - <details>
+      <summary><strong>SKY_L4 - Power planning</strong></summary>
+      gfhfghf
+     
+   - <details>
+      <summary><strong>SKY_L5 - Pin placement and logical cell placement blockage</strong></summary>
+
+     ghf
+   - <details>
+      <summary><strong>SKY_L6 - Steps to run floorplan using OpenLANE</strong></summary>
+
+     gfghf
+   - <details>
+      <summary><strong>SKY_L7 - Review floorplan files and steps to view floorplan</strong></summary>
+      JKHKH
+     
+   - <details>
+      <summary><strong>SKY_L8 - Review floorplan layout in Magic</strong></summary>
+      fjfjfgj
+     
+
+  <details>
