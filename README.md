@@ -310,6 +310,21 @@ Another important interface between Functon and hardware is the RTL language. Th
 
    - <details>
       <summary><strong>SKY_L7 - Review floorplan files and steps to view floorplan</strong></summary>
+ 
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less README.md
+      ```
+      Here we can see variables associated with synthesis and floorplan
+     
+      ![image](https://github.com/user-attachments/assets/edd879c4-b7da-4cb7-bd7d-6be74be2eaa2)
+ 
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less floorplan.tcl
+      ```
+      Here we can observe the floorplan default parameters
+ 
+      
+      
       Now open the terminal where we saw reports and change folder to picorv32a --> runs --> <date_folder> --> tmp --> floorplan 
         
       Then open 7-pdn.def
