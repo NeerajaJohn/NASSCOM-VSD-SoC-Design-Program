@@ -285,17 +285,30 @@ Another important interface between Functon and hardware is the RTL language. Th
 
      To place chip components near to source and ground, modern chips use power mesh fro source as well as ground so that any sudden requirement of charging or discharging can be addressed by the nearest power/ground points.
 
-    ![image](https://github.com/user-attachments/assets/fadb62f7-22f6-40fb-bfaf-62d96c6af4ed)
+     ![image](https://github.com/user-attachments/assets/fadb62f7-22f6-40fb-bfaf-62d96c6af4ed)
 
      
    - <details>
       <summary><strong>SKY_L5 - Pin placement and logical cell placement blockage</strong></summary>
 
-     ghf
+      ![image](https://github.com/user-attachments/assets/73bd85c3-7099-4161-807b-acc22a2e2619)
+
+      ![image](https://github.com/user-attachments/assets/16e17cff-00d2-4864-b0c1-cbca62e7e068)
+
    - <details>
       <summary><strong>SKY_L6 - Steps to run floorplan using OpenLANE</strong></summary>
 
-     gfghf
+      To run floor plane in OpenLANE flow,
+      ```bash
+      run_floorplan
+      ```
+      <p float="left">       
+        <img src="https://github.com/user-attachments/assets/b076bacc-accd-4515-94eb-8279f3188e15" alt="Alt text" width="400" />        
+        <img src="https://github.com/user-attachments/assets/f1be4e6e-dce3-4272-8f47-ed13c5390ce7" alt="Alt text" width="400" />
+     
+      </p>  
+
+
    - <details>
       <summary><strong>SKY_L7 - Review floorplan files and steps to view floorplan</strong></summary>
       JKHKH
