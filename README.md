@@ -220,7 +220,7 @@ Another important interface between Functon and hardware is the RTL language. Th
     ```
     Synthesized netlist
     ```bash
-    ~~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-544/results/synthesis$ less picorv32a.synthesis.v
+    ~~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/results/synthesis$ less picorv32a.synthesis.v
     ```
     ![image](https://github.com/user-attachments/assets/1993ede8-b712-4906-ba49-85f1279622a4)
     
@@ -229,7 +229,7 @@ Another important interface between Functon and hardware is the RTL language. Th
     ![image](https://github.com/user-attachments/assets/3093bdf6-be3e-4d27-80e4-7b0f34cb2f4f)
 
     ```bash
-    ~~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-544/reports/synthesis$ less 1-yosys_4.stat.rpt
+    ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-544/reports/synthesis$ less 1-yosys_4.stat.rpt
     ```
     ![image](https://github.com/user-attachments/assets/e05cfb95-2316-4a35-8c35-2ea28c3dc2ef)
 
@@ -303,15 +303,20 @@ Another important interface between Functon and hardware is the RTL language. Th
       run_floorplan
       ```
       <p float="left">       
-        <img src="https://github.com/user-attachments/assets/b076bacc-accd-4515-94eb-8279f3188e15" alt="Alt text" width="400" />        
-        <img src="https://github.com/user-attachments/assets/f1be4e6e-dce3-4272-8f47-ed13c5390ce7" alt="Alt text" width="400" />
+        <img src="https://github.com/user-attachments/assets/b619d4f5-31c3-4204-820a-a625acea285c" alt="Alt text" width="400" />        
+        <img src="https://github.com/user-attachments/assets/4275fc04-4c28-4117-bc4d-8fd9248d1ff9" alt="Alt text" width="400" />
      
       </p>  
 
-
    - <details>
       <summary><strong>SKY_L7 - Review floorplan files and steps to view floorplan</strong></summary>
-      JKHKH
+     Now open the terminal where we saw reports and change folder to picorv32a --> runs --> <date_folder> --> tmp --> floorplan 
+       Then open 7-pdn.def
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/tmp/floorplan$ less 7-pdn.def
+      ```
+      ![image](https://github.com/user-attachments/assets/1f69e400-1ab2-4b0f-a2f3-ed36cbb0624a)
+
      
    - <details>
       <summary><strong>SKY_L8 - Review floorplan layout in Magic</strong></summary>
