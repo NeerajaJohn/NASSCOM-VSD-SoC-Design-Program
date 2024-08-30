@@ -310,11 +310,14 @@ Another important interface between Functon and hardware is the RTL language. Th
 
    - <details>
       <summary><strong>SKY_L7 - Review floorplan files and steps to view floorplan</strong></summary>
-     Now open the terminal where we saw reports and change folder to picorv32a --> runs --> <date_folder> --> tmp --> floorplan 
-       Then open 7-pdn.def
+      Now open the terminal where we saw reports and change folder to picorv32a --> runs --> <date_folder> --> tmp --> floorplan 
+        
+      Then open 7-pdn.def
+     
       ```bash
       vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/tmp/floorplan$ less 7-pdn.def
       ```
+       
       ![image](https://github.com/user-attachments/assets/1f69e400-1ab2-4b0f-a2f3-ed36cbb0624a)
 
      
