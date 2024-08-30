@@ -297,6 +297,42 @@ Another important interface between Functon and hardware is the RTL language. Th
 
    - <details>
       <summary><strong>SKY_L6 - Steps to run floorplan using OpenLANE</strong></summary>
+ 
+
+      
+       
+
+   - <details>
+      <summary><strong>SKY_L7 - Review floorplan files and steps to view floorplan</strong></summary>
+ 
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less README.md
+      ```
+      > Here we can see variables associated with synthesis and floorplan
+     
+      ![image](https://github.com/user-attachments/assets/edd879c4-b7da-4cb7-bd7d-6be74be2eaa2)
+ 
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less floorplan.tcl
+      ```
+      > Here we can observe the floorplan default parameters
+ 
+      ![image](https://github.com/user-attachments/assets/736a9139-6102-45af-bec7-a4e2c793315b)
+
+      > config files in the selected design can be seen below:
+     
+      ![image](https://github.com/user-attachments/assets/0c2438a9-89bc-4cb3-b1da-38d546ec7c7f)
+     
+
+      > The priority precedence:
+ 
+      - Lowest :system defaults
+      - next : config.tcl
+      - most : <pdk_variant>.tcl (eg. sky130A_sky130_fd_sc_hd_config.tcl)
+ 
+      > upon opening the config.tcl
+      
+      ![image](https://github.com/user-attachments/assets/31ab7df5-ad8e-438f-8a17-c533de2630e2)
 
       To run floor plane in OpenLANE flow,
       ```bash
@@ -306,24 +342,7 @@ Another important interface between Functon and hardware is the RTL language. Th
         <img src="https://github.com/user-attachments/assets/b619d4f5-31c3-4204-820a-a625acea285c" alt="Alt text" width="400" />        
         <img src="https://github.com/user-attachments/assets/4275fc04-4c28-4117-bc4d-8fd9248d1ff9" alt="Alt text" width="400" />
      
-      </p>  
-
-   - <details>
-      <summary><strong>SKY_L7 - Review floorplan files and steps to view floorplan</strong></summary>
- 
-      ```bash
-      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less README.md
-      ```
-      Here we can see variables associated with synthesis and floorplan
-     
-      ![image](https://github.com/user-attachments/assets/edd879c4-b7da-4cb7-bd7d-6be74be2eaa2)
- 
-      ```bash
-      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less floorplan.tcl
-      ```
-      Here we can observe the floorplan default parameters
- 
-      
+      </p> 
       
       Now open the terminal where we saw reports and change folder to picorv32a --> runs --> <date_folder> --> tmp --> floorplan 
         
