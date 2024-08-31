@@ -184,17 +184,22 @@ Another important interface between Functon and hardware is the RTL language. Th
       ```
       ![image](https://github.com/user-attachments/assets/02d0821d-104e-4607-af9f-eb603eee02c9)
 
+      The first prep step is the **merging of .tlef file(with metal layer info) and cell .lef file(with standard cell info)**.
+
+      
   -   <details>
       <summary><strong>SKY_L3 - Review files after design prep and run synthesis</strong></summary>
       
       ```bash
       cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs
       ```
-      This contains working date's folder, inside which we can find the required files created now for the flow
+      
+      This contains working date's folder, inside which we can find the required files created now for the flow. 
     
       ![image](https://github.com/user-attachments/assets/c6c6cb3c-bb22-4c68-9677-099dd196ba28)
       
-      We can use the following comand in another terminal to inspect the resulting config file. The advantage of openlane is that we can change the configurations on the fly. (use q button to close files opened in terminal using less command)
+      We can use the following command in another terminal to inspect the resulting config file. The advantage of openlane is that we can change the configurations on the fly. (use q button to close files opened in terminal using less command)
+      
       ```bash
       ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-544 less config.tcl
       ```
