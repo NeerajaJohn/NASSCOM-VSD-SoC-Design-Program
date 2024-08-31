@@ -1,7 +1,9 @@
 # NASSCOM VSD Soc Design Program
 > This repo includes notes from lectures and discussions and visual and textual documentation of Lab exercises covered in the 14 day workshop
 
-#### Day 1: Sky130 Day 1 - Inception of open-source EDA, OpenLANE and Sky130 PDK
+
+### Day 1: Sky130 Day 1 - Inception of open-source EDA, OpenLANE and Sky130 PDK
+
 
 - <details>
   <summary><strong>SKY130_D1_SK1 - How to talk to computers</strong></summary>
@@ -150,102 +152,113 @@ Another important interface between Functon and hardware is the RTL language. Th
 - <details>
   <summary><strong>SKY130_D1_SK3 - Get familiar with open-source EDA tools</strong></summary>
 
-  - SKY_L1 - OpenLANE Directory structure in detail
+  -   <details>
+      <summary><strong>SKY_L1 - OpenLANE Directory structure in detail</strong></summary>
     
       ![image](https://github.com/user-attachments/assets/d710bd2e-48dd-4147-824d-fcaf0b75994c)
 
       ![image](https://github.com/user-attachments/assets/e71f311e-4821-4c06-9d5a-c7da11a6209c)
- 
-  - SKY_L2 - Design Preparation Step
+      <details>
+      
+  -   <details>
+      <summary><strong>SKY_L2 - Design Preparation Step</strong></summary>
+  
+      Change directory :
+      ```bash
+      cd Desktop/work/tools/openlane_working_dir/openlane          
+      ```
+      Invoke openlane
+      ```bash
+      ~/Desktop/work/tools/openlane_working_dir/openlane$ docker
+      ```
+      This will invoke the efabless openlane flow contained sub system docker. Now we use interactive flow.tcl method(or else it will run complete flow at once)
+      ```bash
+      bash-4.2$ ./flow.tcl -interactive
+      ```
+      ![image](https://github.com/user-attachments/assets/dc732b61-60a2-4ff2-bbbe-7c1c0ad61f19)
+      Now we give required package and then prepare the design to have required files(like RTL src file and sdc files and config files etc). So we point to the required design file . e.g. picorv32
+      ```bash
+      % package require openlane 0.9
+  
+      % prep -design picorv32a
+      ```
+      ![image](https://github.com/user-attachments/assets/02d0821d-104e-4607-af9f-eb603eee02c9)
 
-    Change directory :
-    ```bash
-    cd Desktop/work/tools/openlane_working_dir/openlane          
-    ```
-    Invoke openlane
-    ```bash
-    ~/Desktop/work/tools/openlane_working_dir/openlane$ docker
-    ```
-    This will invoke the efabless openlane flow contained sub system docker. Now we use interactive flow.tcl method(or else it will run complete flow at once)
-    ```bash
-    bash-4.2$ ./flow.tcl -interactive
-    ```
-    ![image](https://github.com/user-attachments/assets/dc732b61-60a2-4ff2-bbbe-7c1c0ad61f19)
-    Now we give required package and then prepare the design to have required files(like RTL src file and sdc files and config files etc). So we point to the required design file . e.g. picorv32
-    ```bash
-    % package require openlane 0.9
-
-    % prep -design picorv32a
-    ```
-    ![image](https://github.com/user-attachments/assets/02d0821d-104e-4607-af9f-eb603eee02c9)
-
-  - SKY_L3 - Review files after design prep and run synthesis
-    ```bash
-    cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs
-    ```
-    This contains working date's folder, inside which we can find the required files created now for the flow
-    ![image](https://github.com/user-attachments/assets/c6c6cb3c-bb22-4c68-9677-099dd196ba28)
+  -   <details>
+      <summary><strong>SKY_L3 - Review files after design prep and run synthesis</strong></summary>
+      
+      ```bash
+      cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs
+      ```
+      This contains working date's folder, inside which we can find the required files created now for the flow
     
-    We can use the following comand in another terminal to inspect the resulting config file. The advantage of openlane is that we can change the configurations on the fly. (use q button to close files opened in terminal using less command)
-    ```bash
-    ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-544 less config.tcl
-    ```
-    Next step is synthesis
-    ```bash
-    run_synthesis
-    ```
-    ![image](https://github.com/user-attachments/assets/726f341a-2708-452b-9210-674aaf456d69)
-    
-  - SKY_L4 - OpenLANE Project Git Link Description
+      ![image](https://github.com/user-attachments/assets/c6c6cb3c-bb22-4c68-9677-099dd196ba28)
+      
+      We can use the following comand in another terminal to inspect the resulting config file. The advantage of openlane is that we can change the configurations on the fly. (use q button to close files opened in terminal using less command)
+      ```bash
+      ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-544 less config.tcl
+      ```
+      Next step is synthesis
+      ```bash
+      run_synthesis
+      ```
+      ![image](https://github.com/user-attachments/assets/726f341a-2708-452b-9210-674aaf456d69)
+      
+  -   <details>
+      <summary><strong>SKY_L4 - OpenLANE Project Git Link Description</strong></summary>
+     
+      All the information regarding openlane can be found in the github page: openlane efabless.
+  
+      Another resource is fossi dial up youtube video.
    
-    All the information regarding openlane can be found in the github page: openlane efabless.
+  -   <details>
+      <summary><strong>SKY_L5 - Steps to characterize synthesis results</strong></summary>
+  
+      ![image](https://github.com/user-attachments/assets/a6008b60-5c73-4936-9fd7-aac138fb2e25)
+  
+      ```math
+      No. of DFF = 1613
+      ```
+      ```math
+      No. of cells =\ 14876
+      ```
+      ```math
+      Flop\ ratio =\ 1613/14876
+      ```    
+      ```math
+      = 0.108429685 = 10.84 \%
+      ```
+      Synthesized netlist
+      ```bash
+      ~~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/results/synthesis$ less picorv32a.synthesis.v
+      ```
+      ![image](https://github.com/user-attachments/assets/1993ede8-b712-4906-ba49-85f1279622a4)
+      
+      Report after synthesis:
+   
+      ![image](https://github.com/user-attachments/assets/3093bdf6-be3e-4d27-80e4-7b0f34cb2f4f)
+  
+      ```bash
+      ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-544/reports/synthesis$ less 1-yosys_4.stat.rpt
+      ```
+      ![image](https://github.com/user-attachments/assets/e05cfb95-2316-4a35-8c35-2ea28c3dc2ef)
+  
+  
+    </details>
 
-    Another resource is fossi dial up youtube video.
- 
-  - SKY_L5 - Steps to characterize synthesis results
+  
+### Sky130 Day 2 - Good floorplan vs bad floorplan and introduction to library cells
 
-    ![image](https://github.com/user-attachments/assets/a6008b60-5c73-4936-9fd7-aac138fb2e25)
-
-    ```math
-    No. of DFF = 1613
-    ```
-    ```math
-    No. of cells =\ 14876
-    ```
-    ```math
-    Flop\ ratio =\ 1613/14876
-    ```    
-    ```math
-    = 0.108429685 = 10.84 \%
-    ```
-    Synthesized netlist
-    ```bash
-    ~~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/results/synthesis$ less picorv32a.synthesis.v
-    ```
-    ![image](https://github.com/user-attachments/assets/1993ede8-b712-4906-ba49-85f1279622a4)
-    
-    Report after synthesis:
- 
-    ![image](https://github.com/user-attachments/assets/3093bdf6-be3e-4d27-80e4-7b0f34cb2f4f)
-
-    ```bash
-    ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-544/reports/synthesis$ less 1-yosys_4.stat.rpt
-    ```
-    ![image](https://github.com/user-attachments/assets/e05cfb95-2316-4a35-8c35-2ea28c3dc2ef)
-
-
-  </details>
-#### Sky130 Day 2 - Good floorplan vs bad floorplan and introduction to library cells
 
 - <details>
   <summary><strong>SKY130_D2_SK1 - Chip Floor planning considerations</strong></summary>
   
-   - <details>
+   -  <details>
       <summary><strong>SKY_L1 - Utilization factor and aspect ratio</strong></summary>
      
       ![image](https://github.com/user-attachments/assets/174643f3-7a9f-4a95-8628-5d2923bad597)
 
-   - <details>
+   -  <details>
       <summary><strong>SKY_L2 - Concept of pre-placed cells</strong></summary>
      
       ![image](https://github.com/user-attachments/assets/a8e3e6a1-2234-409a-bf90-856f8fc719d0)
@@ -255,7 +268,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       ![image](https://github.com/user-attachments/assets/90cfdeeb-78da-4d2b-b95d-7e3023bfea12)
 
 
-   - <details>
+   -  <details>
       <summary><strong>SKY_L3 - De-coupling capacitors</strong></summary>
      
       ![image](https://github.com/user-attachments/assets/52087f4f-e86d-4a65-8458-28b90f547d0c)
@@ -269,33 +282,33 @@ Another important interface between Functon and hardware is the RTL language. Th
       Decoupling helps to avoid power loss and cross talk
 
      
-   - <details>
+   -  <details>
       <summary><strong>SKY_L4 - Power planning</strong></summary>
-     Just like a macro requires decoupling capacitor to provide for sudden voltage requirement as well as discharge scenarios, the whole chip with lots of macros require adjacent Vdd and Vss to maintain the signal shape from driver to load. Avoiding ground bounce and voltage droop outside noise margin is difficult with single tap source.
+            
+      Just like a macro requires decoupling capacitor to provide for sudden voltage requirement as well as discharge scenarios, the whole chip with lots of macros require adjacent Vdd and Vss to maintain the signal shape from driver to load. Avoiding ground bounce and voltage droop outside noise margin is difficult with single tap source.
+       
+      The proble of single source and a possible solution is given below:
  
-     The proble of single source and a possible solution is given below:
-     
-
-     <p float="left">       
+           
+      <p float="left">       
         <img src="https://github.com/user-attachments/assets/2bb2aeea-c81c-4369-bf0f-14eff222a0d5" alt="Alt text" width="300" />        
         <img src="https://github.com/user-attachments/assets/e5e1d1f3-e5b1-436c-bab0-f40532fd2806" alt="Alt text" width="300" />
      
       </p>   
    
+      To place chip components near to source and ground, modern chips use power mesh fro source as well as ground so that any sudden requirement of charging or discharging can be addressed by the nearest power/ground points.
 
-     To place chip components near to source and ground, modern chips use power mesh fro source as well as ground so that any sudden requirement of charging or discharging can be addressed by the nearest power/ground points.
-
-     ![image](https://github.com/user-attachments/assets/fadb62f7-22f6-40fb-bfaf-62d96c6af4ed)
+      ![image](https://github.com/user-attachments/assets/fadb62f7-22f6-40fb-bfaf-62d96c6af4ed)
 
      
-   - <details>
+  -   <details>
       <summary><strong>SKY_L5 - Pin placement and logical cell placement blockage</strong></summary>
 
       ![image](https://github.com/user-attachments/assets/73bd85c3-7099-4161-807b-acc22a2e2619)
 
       ![image](https://github.com/user-attachments/assets/16e17cff-00d2-4864-b0c1-cbca62e7e068)
 
-   - <details>
+  -   <details>
       <summary><strong>SKY_L6 - Steps to run floorplan using OpenLANE</strong></summary>
      
       In OpenLANE there are many switches with which we can adjust the flow directions. To see this, we need to go to configurations folder.
@@ -303,10 +316,12 @@ Another important interface between Functon and hardware is the RTL language. Th
       ```bash
       vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less README.md
       ```
+      
       > Here we can see variables associated with synthesis and floorplan
+ 
      
       ![image](https://github.com/user-attachments/assets/edd879c4-b7da-4cb7-bd7d-6be74be2eaa2)
- 
+       
       ```bash
       vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less floorplan.tcl
       ```
@@ -326,7 +341,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       - most : <pdk_variant>.tcl (eg. sky130A_sky130_fd_sc_hd_config.tcl)
  
       > upon opening the config.tcl
-      
+            
       ![image](https://github.com/user-attachments/assets/31ab7df5-ad8e-438f-8a17-c533de2630e2) 
 
 
@@ -335,13 +350,14 @@ Another important interface between Functon and hardware is the RTL language. Th
       ```bash
       run_floorplan
       ```
+            
       <p float="left">       
         <img src="https://github.com/user-attachments/assets/b619d4f5-31c3-4204-820a-a625acea285c" alt="Alt text" width="400" />        
         <img src="https://github.com/user-attachments/assets/4275fc04-4c28-4117-bc4d-8fd9248d1ff9" alt="Alt text" width="400" />
-     
+           
       </p> 
  
-   - <details>
+  -   <details>
       <summary><strong>SKY_L7 - Review floorplan files and steps to view floorplan</strong></summary>      
  
       To check if config.tcl precedence has taken over system defaults, we can go to logs --> floorplan
@@ -358,9 +374,10 @@ Another important interface between Functon and hardware is the RTL language. Th
       
       Checking config.tcl lets us know which all parameters were included in the current flow
  
-      ```bash
+      ```bash            
       vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/results/floorplan$ less picorv
       ```
+      
       ![image](https://github.com/user-attachments/assets/707c7e42-e14a-4469-abcf-7c5bd3e9b94d)
 
       ```bash
@@ -368,7 +385,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       ```
       Now open the terminal where we saw reports and change folder to picorv32a --> runs --> <date_folder> --> results --> floorplan 
         
-      Then open 7-pdn.def
+      Then open floorplan.def file.
      
       ```bash
       vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/results/floorplan$ less picorv32a.floorplan.def
@@ -390,24 +407,27 @@ Another important interface between Functon and hardware is the RTL language. Th
       = 4,43,587.212425 sq. micron
 
       ```
+            
       def file is not easy to understand. So we can use **MAGIC** tool to see the actual layout after floorplan
-      
-     ```bash
-     vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/results/floorplan$ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
-     ```
-     ![image](https://github.com/user-attachments/assets/41c3af5d-2cf4-44b0-bcbf-1c2b46e416a5)
 
-     This opens up magic layout tool as below:
-     ![image](https://github.com/user-attachments/assets/816661a7-55ae-4812-b336-44b79e3f3542)
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/results/floorplan$ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+      ```
+
+      ![image](https://github.com/user-attachments/assets/41c3af5d-2cf4-44b0-bcbf-1c2b46e416a5)
+  
+      This opens up magic layout tool as below:
+      
+      ![image](https://github.com/user-attachments/assets/816661a7-55ae-4812-b336-44b79e3f3542)
 
 
      
-   - <details>
+  -   <details>
       <summary><strong>SKY_L8 - Review floorplan layout in Magic</strong></summary>
       
-     Maximize window and press s to select the entire layout. Then press b to put the design at centre
-
-     Zooming in: press left click and move cursor, then right click, then press z
+      We can see the floorplan. Maximize window and press s to select the entire layout. Then press v to put the design at centre
+  
+      Zooming in: press left click and move cursor, then right click, then press z
 
       <p float="left">       
         <img src="https://github.com/user-attachments/assets/cfd3d3f5-a3ae-4643-a6ed-fd28738a3d09" alt="Alt text" width="400" />        
@@ -417,8 +437,285 @@ Another important interface between Functon and hardware is the RTL language. Th
 
 
 
-     We set IO mode as 1, so IO pins are placed equidistantly
+      We set IO mode as 1, so IO pins are placed equidistantly. We can see the details of each elements by selecting using s and typing what in tkcon window, as shown below:
+
+      <p float="left">       
+        <img src="https://github.com/user-attachments/assets/e84a4b68-efe9-4456-bb87-42f85936a6c0" alt="Alt text" width="400" />        
+        <img src="https://github.com/user-attachments/assets/eb068cd3-42cd-445f-b514-c37c4f94a0ba" alt="Alt text" width="400" />
+     
+      </p> 
+      
+      There are decap cells
+      
+      Tap cells avoid latchup condition in CMOS devices. These are placed diagonally equidistant set by config file.
+
+      Floorplan doesnt do standard cell placements.(clock buffer, or gate etc)
+
+      
+- <details>
+  <summary><strong>SKY130_D2_SK2 - Library Binding and Placement</strong></summary>
+
+  
+  
+  -   <details>
+      <summary><strong>SKY_L1 - Netlist binding and initial place design</strong></summary>
      
 
 
-  <details>
+   - <details>
+      <summary><strong>SKY_L2 - Optimize placement using estimated wire-length and capacitance</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L2 - Optimize placement using estimated wire-length and capacitance</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L3 - Final placement optimization</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L4 - Need for libraries and characterization</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L5 - Congestion aware placement using RePlAce</strong></summary>
+
+
+- <details>
+  <summary><strong>SKY130_D2_SK3 - Cell design and characterization flows</strong></summary>
+  
+   - <details>
+      <summary><strong>SKY_L1 - Inputs for cell design flow</strong></summary>
+     
+
+   - <details>
+      <summary><strong>SKY_L2 - Circuit design step</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L3 - Layout design step</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L4 - Typical characterization flow</strong></summary>
+
+
+
+- <details>
+  <summary><strong>SKY130_D2_SK4 - General timing characterization parameters</strong></summary>
+  
+   - <details>
+      <summary><strong>SKY_L1 - Timing threshold definitions</strong></summary>
+          
+
+   - <details>
+      <summary><strong>SKY_L2 - Propagation delay and transition time</strong></summary>
+
+
+### Sky130 Day 3 - Design library cell using Magic Layout and ngspice characterization
+
+
+- <details>
+  <summary><strong>SKY130_D3_SK1 - Labs for CMOS inverter ngspice simulations</strong></summary>
+  
+   - <details>
+      <summary><strong>SKY_L0 - IO placer revision</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L1 - SPICE deck creation for CMOS inverter</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L2 - SPICE simulation lab for CMOS inverter</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L3 - Switching Threshold Vm</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L4 - Static and dynamic simulation of CMOS inverter</strong></summary>
+      
+   - <details>
+      <summary><strong>SKY_L5 - Lab steps to git clone vsdstdcelldesign</strong></summary>  
+
+- <details>
+  <summary><strong>SKY130_D3_SK2 - Inception of Layout ÃÂ CMOS fabrication process</strong></summary>
+  
+   - <details>
+      <summary><strong>SKY_L1 - Create Active regions</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L2 - Formation of N-well and P-well</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L3 - Formation of gate terminal</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L4 - Lightly doped drain (LDD) formation</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L5 - Source ÃÂ drain formation</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L6 - Local interconnect formation</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L7 - Higher level metal formation</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L8 - Lab introduction to Sky130 basic layers layout and LEF using inverter</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L9 - Lab steps to create std cell layout and extract spice netlist</strong></summary>   
+      
+- <details> 
+  <summary><strong>SKY130_D3_SK3 - Sky130 Tech File Labs</strong></summary>
+  
+   - <details>
+      <summary><strong>SKY_L1 - Lab steps to create final SPICE deck using Sky130 tech</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L2 - Lab steps to characterize inverter using sky130 model files</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L3 - Lab introduction to Magic tool options and DRC rules</strong></summary>      
+
+   - <details>
+      <summary><strong>SKY_L4 - Lab introduction to Sky130 pdk's and steps to download labs</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L5 - Lab introduction to Magic and steps to load Sky130 tech-rules</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L6 - Lab exercise to fix poly.9 error in Sky130 tech-file</strong></summary>   
+
+   - <details>
+      <summary><strong>SKY_L7 - Lab exercise to implement poly resistor spacing to diff and tap</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L8 - Lab challenge exercise to describe DRC error as geometrical construct</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L9 - Lab challenge to find missing or incorrect rules and fix them</strong></summary>   
+      
+### Sky130 Day 4 - Pre-layout timing analysis and importance of good clock tree
+
+
+- <details>
+  <summary><strong>SKY130_D4_SK1 - Timing modelling using delay tables</strong></summary>
+  
+   - <details>
+      <summary><strong>SKY_L1 - Lab steps to convert grid info to track info</strong></summary>
+        
+   - <details>
+      <summary><strong>SKY_L2 - Lab steps to convert magic layout to std cell LEF</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L3 - Introduction to timing libs and steps to include new cell in synthesis</strong></summary>
+        
+   - <details>
+      <summary><strong>SKY_L4 - Introduction to delay tables</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L5 - Delay table usage Part 1</strong></summary>
+        
+   - <details>
+      <summary><strong>SKY_L6 - Delay table usage Part 2</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L7 - Lab steps to configure synthesis settings to fix slack and include vsdinv</strong></summary>
+
+
+- <details>
+  <summary><strong>SKY130_D4_SK2 - Timing analysis with ideal clocks using openSTA</strong></summary>
+  
+   - <details>
+      <summary><strong>SKY_L1 - Setup timing analysis and introduction to flip-flop setup time</strong></summary>
+        
+   - <details>
+      <summary><strong>SKY_L2 - Introduction to clock jitter and uncertainty</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L3 - Lab steps to configure OpenSTA for post-synth timing analysis</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L4 - Lab steps to optimize synthesis to reduce setup violations</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L5 - Lab steps to do basic timing ECO</strong></summary>
+
+      
+- <details>
+  <summary><strong>SKY130_D4_SK3 - Clock tree synthesis TritonCTS and signal integrity</strong></summary>
+  
+   - <details>
+      <summary><strong>SKY_L1 - Clock tree routing and buffering using H-Tree algorithm</strong></summary>
+        
+   - <details>
+      <summary><strong>SKY_L2 - Crosstalk and clock net shielding</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L3 - Lab steps to run CTS using TritonCTS</strong></summary>
+        
+   - <details>
+      <summary><strong>SKY_L4 - Lab steps to verify CTS runs</strong></summary>
+
+- <details>
+  <summary><strong>SKY130_D4_SK4 - Timing analysis with real clocks using openSTA</strong></summary>
+  
+   - <details>
+      <summary><strong>SKY_L1 - Setup timing analysis using real clocks</strong></summary>
+        
+   - <details>
+      <summary><strong>SKY_L2 - Hold timing analysis using real clocks</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L3 - Lab steps to analyze timing with real clocks using OpenSTA</strong></summary>
+        
+   - <details>
+      <summary><strong>SKY_L4 - Lab steps to execute OpenSTA with right timing libraries and CTS assignment</strong></summary>
+
+    - <details>
+      <summary><strong>SKY_L5 - Lab steps to observe impact of bigger CTS buffers on setup and hold timing</strong></summary>
+        
+         
+
+### Sky130 Day 5 - Final steps for RTL2GDS using tritonRoute and openSTA
+
+
+- <details>
+  <summary><strong>SKY130_D5_SK1 - Routing and design rule check (DRC)</strong></summary>
+  
+   - <details>
+      <summary><strong>SKY_L1 - Introduction to Maze Routing ÃÂ LeeÃÂs algorithm</strong></summary>
+     
+   - <details>
+      <summary><strong>SKY_L2 - LeeÃÂs Algorithm conclusion</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L3 - Design Rule Check</strong></summary>
+
+                    
+
+
+- <details>
+  <summary><strong>SKY130_D5_SK2 - Power Distribution Network and routing</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L1 - Lab steps to build power distribution network</strong></summary>      
+  
+   - <details>
+      <summary><strong>SKY_L2 - Lab steps from power straps to std cell power</strong></summary>
+     
+
+   - <details>
+      <summary><strong>SKY_L3 - Basics of global and detail routing and configure TritonRoute</strong></summary>
+
+- <details>
+  <summary><strong>SKY130_D5_SK3 - TritonRoute Features</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L1 - TritonRoute feature 1 - Honors pre-processed route guides</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L2 - TritonRoute Feature2 & 3 - Inter-guide connectivity and intra- & inter-layer routing</strong></summary>
+
+   - <details>
+      <summary><strong>SKY_L3 - TritonRoute method to handle connectivity</strong></summary>     
+
+   - <details>
+      <summary><strong>SKY_L4 - Routing topology algorithm and final files list post-route</strong></summary>      
+
