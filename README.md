@@ -297,14 +297,9 @@ Another important interface between Functon and hardware is the RTL language. Th
 
    - <details>
       <summary><strong>SKY_L6 - Steps to run floorplan using OpenLANE</strong></summary>
- 
-
-      
-       
-
-   - <details>
-      <summary><strong>SKY_L7 - Review floorplan files and steps to view floorplan</strong></summary>
- 
+     
+      In OpenLANE there are many switches with which we can adjust the flow directions. To see this, we need to go to configurations folder.
+     
       ```bash
       vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less README.md
       ```
@@ -332,9 +327,11 @@ Another important interface between Functon and hardware is the RTL language. Th
  
       > upon opening the config.tcl
       
-      ![image](https://github.com/user-attachments/assets/31ab7df5-ad8e-438f-8a17-c533de2630e2)
+      ![image](https://github.com/user-attachments/assets/31ab7df5-ad8e-438f-8a17-c533de2630e2) 
+
 
       To run floor plane in OpenLANE flow,
+     
       ```bash
       run_floorplan
       ```
@@ -343,21 +340,85 @@ Another important interface between Functon and hardware is the RTL language. Th
         <img src="https://github.com/user-attachments/assets/4275fc04-4c28-4117-bc4d-8fd9248d1ff9" alt="Alt text" width="400" />
      
       </p> 
+ 
+   - <details>
+      <summary><strong>SKY_L7 - Review floorplan files and steps to view floorplan</strong></summary>      
+ 
+      To check if config.tcl precedence has taken over system defaults, we can go to logs --> floorplan
+
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/logs/floorplan$ less 4-ioplacer.log
+      ```
+ 
+      <p float="left">       
+        <img src="https://github.com/user-attachments/assets/7e6f8b2c-127e-476d-b1b3-a59e3668f603" alt="Alt text" width="400" />        
+        <img src="https://github.com/user-attachments/assets/9c480e10-1c08-4373-89c1-f6fa47819dd9" alt="Alt text" width="400" />
+     
+      </p> 
       
-      Now open the terminal where we saw reports and change folder to picorv32a --> runs --> <date_folder> --> tmp --> floorplan 
+      Checking config.tcl lets us know which all parameters were included in the current flow
+ 
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/results/floorplan$ less picorv
+      ```
+      ![image](https://github.com/user-attachments/assets/707c7e42-e14a-4469-abcf-7c5bd3e9b94d)
+
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/$ less config.tcl
+      ```
+      Now open the terminal where we saw reports and change folder to picorv32a --> runs --> <date_folder> --> results --> floorplan 
         
       Then open 7-pdn.def
      
       ```bash
-      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/tmp/floorplan$ less 7-pdn.def
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/results/floorplan$ less picorv32a.floorplan.def
       ```
-       
-      ![image](https://github.com/user-attachments/assets/1f69e400-1ab2-4b0f-a2f3-ed36cbb0624a)
+      ![image](https://github.com/user-attachments/assets/0008d4f8-a16e-4ebe-9b06-e35bddc20fa4)
+ 
+      
+      ```tcl
+      def means data exchange format
+
+      In floorplan.def, it is given that 1000 design units = 1 micron.
+
+      Die area = width * height
+
+      = [(660685-0)/1000] * [(671405-0)/1000]
+
+      = 660.685 * 671.405
+
+      = 4,43,587.212425 sq. micron
+
+      ```
+      def file is not easy to understand. So we can use **MAGIC** tool to see the actual layout after floorplan
+      
+     ```bash
+     vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/results/floorplan$ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+     ```
+     ![image](https://github.com/user-attachments/assets/41c3af5d-2cf4-44b0-bcbf-1c2b46e416a5)
+
+     This opens up magic layout tool as below:
+     ![image](https://github.com/user-attachments/assets/816661a7-55ae-4812-b336-44b79e3f3542)
+
 
      
    - <details>
       <summary><strong>SKY_L8 - Review floorplan layout in Magic</strong></summary>
-      fjfjfgj
+      
+     Maximize window and press s to select the entire layout. Then press b to put the design at centre
+
+     Zooming in: press left click and move cursor, then right click, then press z
+
+      <p float="left">       
+        <img src="https://github.com/user-attachments/assets/cfd3d3f5-a3ae-4643-a6ed-fd28738a3d09" alt="Alt text" width="400" />        
+        <img src="https://github.com/user-attachments/assets/3a849753-2a0d-44b6-9a5f-0bf4ba1d0b77" alt="Alt text" width="400" />
      
+      </p> 
+
+
+
+     We set IO mode as 1, so IO pins are placed equidistantly
+     
+
 
   <details>
