@@ -2,14 +2,14 @@
 > This repo includes notes from lectures and discussions and visual and textual documentation of Lab exercises covered in the 14 day workshop
 
 
-### Day 1: Sky130 Day 1 - Inception of open-source EDA, OpenLANE and Sky130 PDK
+### Inception of open-source EDA, OpenLANE and Sky130 PDK
 
 
 - <details>
-  <summary><strong>SKY130_D1_SK1 - How to talk to computers</strong></summary>
+  <summary><strong>How to talk to computers</strong></summary>
   
    - <details>
-      <summary><strong>SKY_L1 - Introduction to QFN-48 Package, chip, pads, core, die and IPs</strong></summary>
+      <summary><strong> Introduction to QFN-48 Package, chip, pads, core, die and IPs</strong></summary>
       
       **Notes:**
       
@@ -31,7 +31,7 @@
       </p> 
       
    - <details>
-      <summary><strong>SKY_L2 - Introduction to RISC-V</strong></summary>
+      <summary><strong> Introduction to RISC-V</strong></summary>
      
       **Notes: -**
       RISC- V ISA can be described most abstractly as the language or computer or the way in which we talk to the computer.
@@ -43,7 +43,7 @@
       ![image](https://github.com/user-attachments/assets/2886adc8-805c-4041-aa14-9df273cdfbcd)
 
    - <details>
-      <summary><strong>SKY_L3 - From Software Applications to Hardware</strong></summary>
+      <summary><strong> From Software Applications to Hardware</strong></summary>
      
       **Notes: -**
       The Applications that we use in our computer is actually run on the chip hardware present inside. The applications (written in any language like java, c++) enters into a system software and the software converts the program/app into binary language form. The various levels/layers of systwm software in this flow is Operating System, Compiler and Assembler.
@@ -66,10 +66,10 @@ Another important interface between Functon and hardware is the RTL language. Th
   </details>
 
 - <details>
-  <summary><strong>SKY130_D1_SK2 - SoC design and OpenLANE</strong></summary>
+  <summary><strong>  SoC design and OpenLANE</strong></summary>
 
   -   <details>
-      <summary><strong>SKY_L1 - Introduction to all components of open-source digital asic design</strong></summary>
+      <summary><strong> Introduction to all components of open-source digital asic design</strong></summary>
     
       **Notes: -**
       
@@ -89,7 +89,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       </details>
       
   -   <details>
-      <summary><strong>SKY_L2 - Simplified RTL2GDS flow</strong></summary>
+      <summary><strong> Simplified RTL2GDS flow</strong></summary>
     
       **Notes: -**
       The major steps in RTL to GDS flow is shown below:
@@ -114,7 +114,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       </details>
       
   -   <details>
-      <summary><strong>SKY_L3 - Introduction to OpenLANE and Strive chipsets</strong></summary>
+      <summary><strong> Introduction to OpenLANE and Strive chipsets</strong></summary>
  
       **Notes: -**
 
@@ -133,7 +133,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       </details>
       
   -   <details>  
-      <summary><strong>SKY_L4 - Introduction to OpenLANE detailed ASIC design flow</strong></summary>
+      <summary><strong> Introduction to OpenLANE detailed ASIC design flow</strong></summary>
  
       **Notes: -**
       OpenLANE ASIC flow:
@@ -150,10 +150,10 @@ Another important interface between Functon and hardware is the RTL language. Th
   </details>
 
 - <details>
-  <summary><strong>SKY130_D1_SK3 - Get familiar with open-source EDA tools</strong></summary>
+  <summary><strong> Get familiar with open-source EDA tools</strong></summary>
 
   -   <details>
-      <summary><strong>SKY_L1 - OpenLANE Directory structure in detail</strong></summary>
+      <summary><strong> OpenLANE Directory structure in detail</strong></summary>
     
       ![image](https://github.com/user-attachments/assets/d710bd2e-48dd-4147-824d-fcaf0b75994c)
 
@@ -161,7 +161,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       <details>
       
   -   <details>
-      <summary><strong>SKY_L2 - Design Preparation Step</strong></summary>
+      <summary><strong> Design Preparation Step</strong></summary>
   
       Change directory :
       ```bash
@@ -188,7 +188,7 @@ Another important interface between Functon and hardware is the RTL language. Th
 
       
   -   <details>
-      <summary><strong>SKY_L3 - Review files after design prep and run synthesis</strong></summary>
+      <summary><strong> Review files after design prep and run synthesis</strong></summary>
       
       ```bash
       cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs
@@ -210,14 +210,14 @@ Another important interface between Functon and hardware is the RTL language. Th
       ![image](https://github.com/user-attachments/assets/726f341a-2708-452b-9210-674aaf456d69)
       
   -   <details>
-      <summary><strong>SKY_L4 - OpenLANE Project Git Link Description</strong></summary>
+      <summary><strong> OpenLANE Project Git Link Description</strong></summary>
      
       All the information regarding openlane can be found in the github page: openlane efabless.
   
       Another resource is fossi dial up youtube video.
    
   -   <details>
-      <summary><strong>SKY_L5 - Steps to characterize synthesis results</strong></summary>
+      <summary><strong> Steps to characterize synthesis results</strong></summary>
   
       ![image](https://github.com/user-attachments/assets/a6008b60-5c73-4936-9fd7-aac138fb2e25)
   
@@ -252,19 +252,19 @@ Another important interface between Functon and hardware is the RTL language. Th
     </details>
 
   
-### Sky130 Day 2 - Good floorplan vs bad floorplan and introduction to library cells
+###  Good floorplan vs bad floorplan and introduction to library cells
 
 
 - <details>
-  <summary><strong>SKY130_D2_SK1 - Chip Floor planning considerations</strong></summary>
+  <summary><strong>  Chip Floor planning considerations</strong></summary>
   
    -  <details>
-      <summary><strong>SKY_L1 - Utilization factor and aspect ratio</strong></summary>
+      <summary><strong> Utilization factor and aspect ratio</strong></summary>
      
       ![image](https://github.com/user-attachments/assets/174643f3-7a9f-4a95-8628-5d2923bad597)
 
    -  <details>
-      <summary><strong>SKY_L2 - Concept of pre-placed cells</strong></summary>
+      <summary><strong> Concept of pre-placed cells</strong></summary>
      
       ![image](https://github.com/user-attachments/assets/a8e3e6a1-2234-409a-bf90-856f8fc719d0)
      
@@ -274,7 +274,7 @@ Another important interface between Functon and hardware is the RTL language. Th
 
 
    -  <details>
-      <summary><strong>SKY_L3 - De-coupling capacitors</strong></summary>
+      <summary><strong>  De-coupling capacitors</strong></summary>
      
       ![image](https://github.com/user-attachments/assets/52087f4f-e86d-4a65-8458-28b90f547d0c)
 
@@ -288,7 +288,7 @@ Another important interface between Functon and hardware is the RTL language. Th
 
      
    -  <details>
-      <summary><strong>SKY_L4 - Power planning</strong></summary>
+      <summary><strong>  Power planning</strong></summary>
             
       Just like a macro requires decoupling capacitor to provide for sudden voltage requirement as well as discharge scenarios, the whole chip with lots of macros require adjacent Vdd and Vss to maintain the signal shape from driver to load. Avoiding ground bounce and voltage droop outside noise margin is difficult with single tap source.
        
@@ -307,14 +307,14 @@ Another important interface between Functon and hardware is the RTL language. Th
 
      
   -   <details>
-      <summary><strong>SKY_L5 - Pin placement and logical cell placement blockage</strong></summary>
+      <summary><strong> Pin placement and logical cell placement blockage</strong></summary>
 
       ![image](https://github.com/user-attachments/assets/73bd85c3-7099-4161-807b-acc22a2e2619)
 
       ![image](https://github.com/user-attachments/assets/16e17cff-00d2-4864-b0c1-cbca62e7e068)
 
   -   <details>
-      <summary><strong>SKY_L6 - Steps to run floorplan using OpenLANE</strong></summary>
+      <summary><strong> Steps to run floorplan using OpenLANE</strong></summary>
      
       In OpenLANE there are many switches with which we can adjust the flow directions. To see this, we need to go to configurations folder.
      
@@ -350,7 +350,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       ![image](https://github.com/user-attachments/assets/31ab7df5-ad8e-438f-8a17-c533de2630e2) 
 
 
-      To run floor plane in OpenLANE flow,
+      To run floor planning in OpenLANE flow,
      
       ```bash
       run_floorplan
@@ -465,30 +465,129 @@ Another important interface between Functon and hardware is the RTL language. Th
   -   <details>
       <summary><strong>SKY_L1 - Netlist binding and initial place design</strong></summary>
      
-
+      > Assigning exact shape and size with width and height for every component in the circuit
+      > 
+      > All information is available in libraries(with sub libraries for delay, conditions for output, shape info etc), and in different flavours of same cell
+      >
+      > Placement will avoid area with pre placed cells
+      >
+      > Cells are placed close to IO pins and logical connectivity is maintained
+      
+      
+      ![image](https://github.com/user-attachments/assets/816cf83d-3217-47d8-9e26-09ae3a7fdc23)
 
    - <details>
       <summary><strong>SKY_L2 - Optimize placement using estimated wire-length and capacitance</strong></summary>
 
-   - <details>
-      <summary><strong>SKY_L2 - Optimize placement using estimated wire-length and capacitance</strong></summary>
+      > Diagonally opposite placement requiremnt with longer routing can be handled by optimization
+      >
+      > We estimate wirelength and capacitance before routing( will check slew to see if distance between cells are reasonable)
+      >
+      > We insert repeaters to maintain signal integrity using buffers
+      >
+      > More area will be cost
+      
+      
+      ![image](https://github.com/user-attachments/assets/1ebeeb2e-4c03-4ddf-834a-99a7b6fe38db)
+
 
    - <details>
       <summary><strong>SKY_L3 - Final placement optimization</strong></summary>
 
+      > Abutment : connecting certain logic to reduce delay
+      >
+      > This is very much useful for high frequency circuit
+      >
+      > When buffers can't be placed in some blocked area, we have to use clocking and routing algorithms for handling criss cross connections
+      >
+      > We csn use different metal layers in such cases
+      >
+      > Based on ideal clock conditions, setup timing analysis will be done, to check if specifications are met
+      
+      ![image](https://github.com/user-attachments/assets/6c318cad-ac22-4e38-af2e-41e8b95ef246)
+
+      
    - <details>
       <summary><strong>SKY_L4 - Need for libraries and characterization</strong></summary>
+
+      > Step of logic design :
+      >
+      > Synthesis :arrangement of gates and proper connection that will represent the functionality of the design
+      >
+      > FLoor planning : Decide area of cells
+      >
+      > Placement : place on chip to meet initial timing
+      >
+      > Clock tree synthesis : to get zero clock skew
+      >
+      > Routing : eg. maze routing
+      >
+      > Static Timing Analysis: sign off timing analysis
+      >
+      > In all steps, Gates or cells are common. The collection of characteristics of gates is present in library
+      
+
 
    - <details>
       <summary><strong>SKY_L5 - Congestion aware placement using RePlAce</strong></summary>
 
+      > Placement is congestion based
+      >
+      > Timing is not considered now
+      >
+      > There are different tools for global and detailed placement
+      >
+      > Legaization : No overlap, Abutment, Placed in correct cell position
+      >
+      > Globel placement main focus is reduction of Half Parameter Wire length
+      >
 
+      To run placement in OpenLANE flow,
+     
+      ```bash
+      run_floorplan
+      ```
+ 
+      <p float="left">       
+        <img src="https://github.com/user-attachments/assets/8e9a9d60-494a-4c52-a2de-fd10a1803edf" alt="Alt text" width="400" />        
+        <img src="https://github.com/user-attachments/assets/58066956-7f76-48d3-b2e1-91faaaf17914" alt="Alt text" width="400" />
+     
+      </p> 
+      
+
+      > Many iterations are done to converge , first Global, then detailed placement is done
+      >
+      > To see what happened after placement, we can use magic tool again
+ 
+      
+
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-08_20-54/results/floorplan$ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+      ```
+
+      ![image](https://github.com/user-attachments/assets/126b8134-91f8-4b59-9e15-2202d439a59d)
+
+      ![image](https://github.com/user-attachments/assets/3e9d56b6-68fd-4720-ae9d-3f6f297bddc3)
+
+      ![image](https://github.com/user-attachments/assets/1c0b876d-22c0-4919-b817-7d64278bae4e)
+
+      ![image](https://github.com/user-attachments/assets/33d63fa5-5547-43b5-9d28-305e3af5ffc1)
+
+      ![image](https://github.com/user-attachments/assets/50d07b14-bf36-437c-b7fc-61f10ee37e61)
+
+      > Floorplan doesnot create power network
+      >
+      > It is done post CTS
+      
 - <details>
   <summary><strong>SKY130_D2_SK3 - Cell design and characterization flows</strong></summary>
   
    - <details>
       <summary><strong>SKY_L1 - Inputs for cell design flow</strong></summary>
-     
+
+      > Standard cell: the different cells from library
+      >
+      > 
 
    - <details>
       <summary><strong>SKY_L2 - Circuit design step</strong></summary>
