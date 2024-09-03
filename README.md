@@ -1,4 +1,4 @@
-# NASSCOM VSD Soc Design Program
+![image](https://github.com/user-attachments/assets/bc0bb7f1-7b6e-4b52-ad16-455e90830997)# NASSCOM VSD Soc Design Program
 > This repo includes notes from lectures and discussions and visual and textual documentation of Lab exercises covered in the 14 day workshop
 
 
@@ -1173,7 +1173,16 @@ Another important interface between Functon and hardware is the RTL language. Th
 
       > Need to see if by inserting inverter with modified parameter can change the results(area and time)
       >
-      > 
+      > But area has increase from 147712 to 181730( Strategy selected earlier was AREA, now selected DELAY)
       ![image](https://github.com/user-attachments/assets/a7059509-0c80-4bbf-8d95-20d266857917)
+      
+      ![image](https://github.com/user-attachments/assets/0ce38384-5eaf-4822-8007-3824e91276e9)
+      ![image](https://github.com/user-attachments/assets/1cd50bce-4256-4c70-96ff-8ff7c3c6edb7)
+
+      > tns and wns became 0 after seting env(SYNTH_STRATEGY) as DELAY3 and env(SYNTH_SIZING) as 1 after overwriting prep design
+      >
+      > area decreases
+      > screenshot of merged.lef with sky130_vsdinv as MACRO
+      ![image](https://github.com/user-attachments/assets/3747fd7f-77a2-4307-9536-606dd11afbac)
       
       
