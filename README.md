@@ -816,9 +816,15 @@ Another important interface between Functon and hardware is the RTL language. Th
       > Now we can run this file using ngspice tool(install ngspice using sudo apt install ngspice)
       ```bash
       vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ ngspice sky130_inv.spice
-
+      ```
+      
+   - <details>
+      <summary><strong>Lab steps to characterize inverter using sky130 model files</strong></summary>
+      > To plot chara:
+      ```bash
       ngspice 1 -> plot y time a
       ```
+     
       ![image](https://github.com/user-attachments/assets/1edd294c-993d-45b8-98c6-ca1c28dd7fe5)
 
       > Generated plot
@@ -836,26 +842,144 @@ Another important interface between Functon and hardware is the RTL language. Th
       > Rise Time = 2.25224e-09 - 2.18587e-09
       >
       > = 6.637e-11s = 66.37ps
-   - <details>
-      <summary><strong>Lab steps to characterize inverter using sky130 model files</strong></summary>
 
+      > Fall time calculation:
+      >
+      > Fall Time = 4.09731e-09 - 4.05614e-09
+      >
+      >           = 41.7ps
+      
+      ![image](https://github.com/user-attachments/assets/cd496309-9d6e-4bb9-86e8-764fc43cb814)
+      > Fall cell Delay/Propagation delay: Time between input falls to 50 % and output rises to 50%
+      >
+      > 50% of 3.3V = 1.65V
+      >
+      > 2.21517e-09-2.15e-09 = 6.517e-11 = 65.17 ps
+      
+      ![image](https://github.com/user-attachments/assets/79a6f31a-e3f7-40f5-b457-d5d6558a462f)
+      >Cell Rise Time
+      >
+      >Time between output falls to 50 % and input rises to 50 %
+      >
+      > 4.07993e-09-4.05007e-09 = 2.986e-11 = 29ps
+      
+      ![image](https://github.com/user-attachments/assets/f946b4f7-9793-45a5-bf45-a4e9c5861677)
+
+
+      
    - <details>
       <summary><strong>Lab introduction to Magic tool options and DRC rules</strong></summary>      
+      > Documentation: http://opencircuitdesign.com/magic
 
+      > Magic technology file:
+      >
+      > CIF
+      >
+      > 
+      
    - <details>
       <summary><strong> Lab introduction to Sky130 pdk's and steps to download labs</strong></summary>
+     
+      ```bash
+      $: cd
 
+      $: wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+
+      $: tar xfz drc_tests.tgz
+
+      $: cd drc_tests
+
+      $: gvim .magicrc
+
+      $: magic -d XR &
+
+      ```
+      
+      <p float="left">       
+        <img src="https://github.com/user-attachments/assets/3d04c81c-c330-439a-9abe-b0f1d999d368" alt="Alt text" width="400" />   
+        
+        <img src="https://github.com/user-attachments/assets/f1a48d7e-66c7-48b3-99c2-a33c736170e4" alt="Alt text" width="400" />
+     
+      </p>   
+      > .magicrc file 
+
+      ![image](https://github.com/user-attachments/assets/e7b72ebc-d13d-49dd-b4f0-5b023b7b784d)
+
+      
+       
    - <details>
       <summary><strong>  Lab introduction to Magic and steps to load Sky130 tech-rules</strong></summary>
+      
+      > Link for periphery rules : 
+     
+      [https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html](https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html#m3)  
+      ![image](https://github.com/user-attachments/assets/2d141982-bb5d-4f80-82d3-fb62cbccbef2)
+      > File -> open -> met3.mag
+      ![image](https://github.com/user-attachments/assets/88944d1b-e17d-4c66-8ea2-de9813d50b8e)
+      > using ; to type in tkcon directly from GUI
+      > 
+      > ; drc why (returns drc error in console window)
+      
+      ![image](https://github.com/user-attachments/assets/b49aa933-80a1-466a-9637-5207fae647f8)
 
+      > Derived layers
+      >
+      > Fill in a large area with met3 contact
+      >
+      > hover over that area and type
+      >
+      > cif see VIA2
+      >
+      > shows mask with contact cuts
+      >
+      > feed clear to not show the cuts
+      ![image](https://github.com/user-attachments/assets/3a9a4609-f5e2-4787-8f66-2e33111ebe6f)
+      
    - <details>
-      <summary><strong>  Lab exercise to fix poly.9 error in Sky130 tech-file</strong></summary>   
-
+      <summary><strong>  Lab exercise to fix poly.9 error in Sky130 tech-file</strong></summary> 
+      > load poly
+      
+      ![image](https://github.com/user-attachments/assets/5a386c9d-bb30-43ac-9d9c-005f27d1611f)
+      > Find error
+      >
+      > Distance should be 0.48u, but box command of area selected between poly and polynres is 0.21u, so violating the rules
+      ![image](https://github.com/user-attachments/assets/3694f80a-e1bb-4ca1-9034-b8d715efdf7c)
+      > Finding poly.9 in sky130A.tech file opened using vi
+      >
+      > vi sky130A.tech
+      >
+      ![image](https://github.com/user-attachments/assets/36dbf069-89cc-4b1f-bafa-d02536457f63)
+      >
+      >Insert new rule as shown below:
+      >
+      ![image](https://github.com/user-attachments/assets/d9ba37d6-a5d5-484d-9826-0a3d1913132a)
+      > After editing, load tech file from tkcon
+      >
+      ![image](https://github.com/user-attachments/assets/2ae607ba-4ae5-4050-98ed-3781d259d55a)
+      ![image](https://github.com/user-attachments/assets/d6cc7354-fb7b-4f59-b6d8-a92c857018df)
+      
+      
+  
    - <details>
       <summary><strong> Lab exercise to implement poly resistor spacing to diff and tap</strong></summary>
+     
+      > copy resistors
+      > 
+      
+
+      > finding drc error after editing rules
+      >
+      ![image](https://github.com/user-attachments/assets/aad590e9-9730-43de-ac0c-b3c65cfe04d8)
+      > All errors are not accounted for
+      > so edit tech file and load again
+      >
+      ![image](https://github.com/user-attachments/assets/aef32a61-eeed-4efc-bb74-8fc7565fc42c)
+      ![image](https://github.com/user-attachments/assets/5d21feba-675a-4fab-805b-3565e87c4120)
 
    - <details>
       <summary><strong>  Lab challenge exercise to describe DRC error as geometrical construct</strong></summary>
+      
+      >
 
    - <details>
       <summary><strong> Lab challenge to find missing or incorrect rules and fix them</strong></summary>   
