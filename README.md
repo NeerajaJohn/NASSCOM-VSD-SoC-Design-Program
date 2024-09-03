@@ -1107,9 +1107,72 @@ Another important interface between Functon and hardware is the RTL language. Th
       > Extract lef file and open it
       >
       ![image](https://github.com/user-attachments/assets/d9e1759f-9047-4eeb-9e75-4fb26b018fd9)
-      
      
+      ![image](https://github.com/user-attachments/assets/9993dc2a-3f63-4f95-881f-9b9ffd1bd60c)
+
+   - <details>
+      <summary><strong>Introduction to timing libs and steps to include new cell in synthesis</strong></summary>  
+     
+      > Next step is to plug in the lef file to picorv32
+      >
+      > copy lef file and lib file with cell definition to src folder of  picorv32a designs
+      >
+      
+      ```bash
+      vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+      vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/libs$ cp sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+      ```
+      list files in destination folder and verify file is copied
+     
+      ```bash
+      vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src$ ls -ltr
+      ```
+     
+      ![image](https://github.com/user-attachments/assets/fe91577a-06e4-4448-a78f-f1a0bce95c5b)
+
+      >
+      >Modify config.tcl
+      >
+      ![image](https://github.com/user-attachments/assets/9961f2d8-617b-4e68-96ee-06417b480560)
 
 
+      > run docker
+      >
+      ```bash
+      vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane$ docker
+
+      bash-4.2$ ./flow.tcl -interactive
+
+      % package require openlane 0.9
+
+      % prep -design picorv32a -tag 02-09_07-24 -overwrite
+
+      ```
+
+      ![image](https://github.com/user-attachments/assets/dd38806e-efff-4863-b43c-01b8be9baa5a)
+
+      >  Include newly added lef to openlane
+      >
+      ```bash
+      set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+
+      add_lefs -src $lefs
+      ```
+      ![image](https://github.com/user-attachments/assets/7d959ed9-ea0b-47f3-8ecb-cd6db225ca42)
+
+      > Run synthesis
+      >
+      ```bash
+      run_synthesis
+      ```
+      ![image](https://github.com/user-attachments/assets/68aede23-f26a-4162-aad5-197421ce04eb)
+
+      ![image](https://github.com/user-attachments/assets/6a30f204-864a-4d35-9ea2-a641cb7692aa)
+
+      > Need to see if by inserting inverter with modified parameter can change the results(area and time)
+      >
+      > 
       
       
