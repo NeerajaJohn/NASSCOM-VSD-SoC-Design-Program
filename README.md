@@ -1013,7 +1013,7 @@ Another important interface between Functon and hardware is the RTL language. Th
 
 
    - <details>
-      <summary><strong> Lab challenge to find missing or incorrect rules and fix them</strong></summary>        
+      <summary><strong> Lab challenge to find missing or incorrect rules and fix them</strong></summary>              
       ![image](https://github.com/user-attachments/assets/6ae95417-286e-4892-a3a7-b2088dc7ba8d)
 
       ![image](https://github.com/user-attachments/assets/946f2624-510a-4b63-ab05-0264d64bfdfa)
@@ -1027,28 +1027,32 @@ Another important interface between Functon and hardware is the RTL language. Th
 
 ### Sky130 Day 4 - Pre-layout timing analysis and importance of good clock tree
 
-- <details>
-  Timing modelling using delay tables
-  
-  -  Open custom inverter layout
-     > open sky130_inv.mag in magic using sky130A.tech file
-     >
-     ```bash
-     magic -T sky130A.tech sky130_inv.mag &
-     ```
+ <details>
+   Timing modelling using delay tables
+        
+   -  Open custom inverter layout
+     
+      > open sky130_inv.mag in magic using sky130A.tech file
+      >
+      ```bash
+      magic -T sky130A.tech sky130_inv.mag &
+      ```
+      
+      > Conditions/Guidelines :
+      >
+      > 1. The input and output ports must lie on the intersection of horizontal and vertical tracks
+      > 2. The width of standard cell must be in odd multiples of track pitch
+      > 3. Height should be odd multiple of vertical diemension of track pitch
+      
 
-     > Conditions/Guidelines :
-     >
-     > 1. The input and output ports must lie on the intersection of horizontal and vertical tracks
-     > 2. The width of standard cell must be in odd multiples of track pitch
-     > 3. Height should be odd multiple of vertical diemension of track pitch
-     >
-     ```bash
-     magic -T sky130A.tech sky130_inv.mag &
-     ```
-     ![image](https://github.com/user-attachments/assets/6246fd32-ad81-47d0-97a4-024277bf9a79)
+      ```bash
+      magic -T sky130A.tech sky130_inv.mag &
+      ```
+      
+      [image](https://github.com/user-attachments/assets/6246fd32-ad81-47d0-97a4-024277bf9a79)
+      
 
-  
+      
 
 
       
