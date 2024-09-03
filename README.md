@@ -363,7 +363,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       </p> 
  
   -   <details>
-      <summary><strong>SKY_L7 - Review floorplan files and steps to view floorplan</strong></summary>      
+      <summary><strong> Review floorplan files and steps to view floorplan</strong></summary>      
  
       To check if config.tcl precedence has taken over system defaults, we can go to logs --> floorplan
 
@@ -458,12 +458,12 @@ Another important interface between Functon and hardware is the RTL language. Th
 
       
 - <details>
-  <summary><strong>SKY130_D2_SK2 - Library Binding and Placement</strong></summary>
+  <summary><strong> Library Binding and Placement</strong></summary>
 
   
   
   -   <details>
-      <summary><strong>SKY_L1 - Netlist binding and initial place design</strong></summary>
+      <summary><strong> Netlist binding and initial place design</strong></summary>
      
       > Assigning exact shape and size with width and height for every component in the circuit
       > 
@@ -477,7 +477,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       ![image](https://github.com/user-attachments/assets/816cf83d-3217-47d8-9e26-09ae3a7fdc23)
 
    - <details>
-      <summary><strong>SKY_L2 - Optimize placement using estimated wire-length and capacitance</strong></summary>
+      <summary><strong> Optimize placement using estimated wire-length and capacitance</strong></summary>
 
       > Diagonally opposite placement requiremnt with longer routing can be handled by optimization
       >
@@ -492,7 +492,7 @@ Another important interface between Functon and hardware is the RTL language. Th
 
 
    - <details>
-      <summary><strong>SKY_L3 - Final placement optimization</strong></summary>
+      <summary><strong> Final placement optimization</strong></summary>
 
       > Abutment : connecting certain logic to reduce delay
       >
@@ -508,7 +508,7 @@ Another important interface between Functon and hardware is the RTL language. Th
 
       
    - <details>
-      <summary><strong>SKY_L4 - Need for libraries and characterization</strong></summary>
+      <summary><strong>  Need for libraries and characterization</strong></summary>
 
       > Step of logic design :
       >
@@ -529,7 +529,7 @@ Another important interface between Functon and hardware is the RTL language. Th
 
 
    - <details>
-      <summary><strong>SKY_L5 - Congestion aware placement using RePlAce</strong></summary>
+      <summary><strong>  Congestion aware placement using RePlAce</strong></summary>
 
       > Placement is congestion based
       >
@@ -580,111 +580,254 @@ Another important interface between Functon and hardware is the RTL language. Th
       > It is done post CTS
       
 - <details>
-  <summary><strong>SKY130_D2_SK3 - Cell design and characterization flows</strong></summary>
+  <summary><strong> Cell design and characterization flows</strong></summary>
+
   
    - <details>
-      <summary><strong>SKY_L1 - Inputs for cell design flow</strong></summary>
+      <summary><strong>  Inputs for cell design flow</strong></summary>
 
       > Standard cell: the different cells from library
       >
       > 
 
    - <details>
-      <summary><strong>SKY_L2 - Circuit design step</strong></summary>
+      <summary><strong>  Circuit design step</strong></summary>
+
+      >
 
    - <details>
-      <summary><strong>SKY_L3 - Layout design step</strong></summary>
+      <summary><strong>  Layout design step</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L4 - Typical characterization flow</strong></summary>
+      <summary><strong>  Typical characterization flow</strong></summary>
 
 
 
 - <details>
-  <summary><strong>SKY130_D2_SK4 - General timing characterization parameters</strong></summary>
+  <summary><strong>  General timing characterization parameters</strong></summary>
   
    - <details>
-      <summary><strong>SKY_L1 - Timing threshold definitions</strong></summary>
+      <summary><strong> Timing threshold definitions</strong></summary>
           
 
    - <details>
-      <summary><strong>SKY_L2 - Propagation delay and transition time</strong></summary>
+      <summary><strong> Propagation delay and transition time</strong></summary>
 
 
 ### Sky130 Day 3 - Design library cell using Magic Layout and ngspice characterization
 
 
 - <details>
-  <summary><strong>SKY130_D3_SK1 - Labs for CMOS inverter ngspice simulations</strong></summary>
+  <summary><strong> Labs for CMOS inverter ngspice simulations</strong></summary>
   
    - <details>
-      <summary><strong>SKY_L0 - IO placer revision</strong></summary>
+      <summary><strong> IO placer revision</strong></summary>
+
+      > We can change the parameters for floorplan on the fly
+      >
+      > Reset the variable and run the flow again
+      >
+
+      > Before setting IO mode to another value(equidistant)
+      
+      ![image](https://github.com/user-attachments/assets/39261f78-367b-44cc-8f9a-9df62a09f3c6)
+
+      > After setting IO Mode to 2
+      >
+      > We can see that in 2nd layout, IO pins are stacked at one place instead of being placed equidistantly
+      ![image](https://github.com/user-attachments/assets/2bc51f52-9a80-468e-82b2-1a9c6c1f6914)
 
    - <details>
-      <summary><strong>SKY_L1 - SPICE deck creation for CMOS inverter</strong></summary>
+      <summary><strong>SPICE deck creation for CMOS inverter</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L2 - SPICE simulation lab for CMOS inverter</strong></summary>
+      <summary><strong> SPICE simulation lab for CMOS inverter</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L3 - Switching Threshold Vm</strong></summary>
+      <summary><strong> Switching Threshold Vm</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L4 - Static and dynamic simulation of CMOS inverter</strong></summary>
+      <summary><strong> Static and dynamic simulation of CMOS inverter</strong></summary>
       
    - <details>
-      <summary><strong>SKY_L5 - Lab steps to git clone vsdstdcelldesign</strong></summary>  
+      <summary><strong> Lab steps to git clone vsdstdcelldesign</strong></summary> 
+     
+      > steps to clone the magic design files from a repository
+ 
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane$git clone https://github.com/nickson-jose/vsdstdcelldesign
+      ```
+      
+      ![image](https://github.com/user-attachments/assets/766b23f6-8180-4c39-a48e-c8b1f4c7515f)
 
+      Copy mag file from libs.tech folder to vsdstdcelldesign folder
+
+     ```bash
+     vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic$ cp sky130A.tech /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/
+      ```
+      ![image](https://github.com/user-attachments/assets/457f0894-4596-43a4-a777-56e48ab99d30)
+
+      > Now we can open the layout of inverter cell copied from github:
+      
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ magic -T sky130A.tech sky130_inv.mag &
+      ```
+
+      ![image](https://github.com/user-attachments/assets/ad94b999-2081-4ad0-a1ab-bdd438cd25c5)
+
+      
 - <details>
-  <summary><strong>SKY130_D3_SK2 - Inception of Layout ÃÂ CMOS fabrication process</strong></summary>
+  <summary><strong>Inception of Layout and CMOS fabrication process</strong></summary>
   
    - <details>
-      <summary><strong>SKY_L1 - Create Active regions</strong></summary>
+      <summary><strong> Create Active regions</strong></summary>
+      
 
    - <details>
-      <summary><strong>SKY_L2 - Formation of N-well and P-well</strong></summary>
+      <summary><strong> Formation of N-well and P-well</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L3 - Formation of gate terminal</strong></summary>
+      <summary><strong> Formation of gate terminal</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L4 - Lightly doped drain (LDD) formation</strong></summary>
+      <summary><strong> Lightly doped drain (LDD) formation</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L5 - Source ÃÂ drain formation</strong></summary>
+      <summary><strong> Source and drain formation</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L6 - Local interconnect formation</strong></summary>
+      <summary><strong> Local interconnect formation</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L7 - Higher level metal formation</strong></summary>
+      <summary><strong> Higher level metal formation</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L8 - Lab introduction to Sky130 basic layers layout and LEF using inverter</strong></summary>
+      <summary><strong> Lab introduction to Sky130 basic layers layout and LEF using inverter</strong></summary>
 
+      > nmos is highlighted
+      >
+      ![image](https://github.com/user-attachments/assets/73081fc0-19ca-49d7-a82e-3d89b44ab067)
+
+      > pmos is highlighted
+      >
+      ![image](https://github.com/user-attachments/assets/3cf18c4c-496a-4294-b0cf-f5d195ece7f0)
+
+      > output Y
+      >
+      ![image](https://github.com/user-attachments/assets/e448df10-6a41-472c-874b-5526dcbc5252)
+
+      > polysilicon
+      >
+      ![image](https://github.com/user-attachments/assets/035f2378-3bf1-4ff9-b143-d5716aeba818)
+
+      > VDD connected (VPWR)
+      >
+      ![image](https://github.com/user-attachments/assets/5ea748dc-3547-43a1-b44d-427555ce76ac)
+
+      > GND
+      >
+      ![image](https://github.com/user-attachments/assets/ccb9aa4a-fd25-4048-9d3d-7ba9f82e5254)
+
+      > Gates of both Transistors are connected to the input(press s 3 times)
+      >
+      ![image](https://github.com/user-attachments/assets/a3942c36-ae1e-400d-b0d5-4c7260bde486)
+
+      > Layers
+      >
+      > First layer : local interconnect layer --> locali
+      > 2nd layer : metal 1 light purple
+      > 3rd layer : metal 2 pink
    - <details>
-      <summary><strong>SKY_L9 - Lab steps to create std cell layout and extract spice netlist</strong></summary>   
+      <summary><strong>Lab steps to create std cell layout and extract spice netlist</strong></summary>   
+
+      > Std cell definition says VDD and gnd to be in metal 1
+      >
+      > First make all layers
+      >
+      > Magic has DRC tool which checks for Design rules
+      >
+      > DRC = 0 shows no errors
+      >
+      > DRC = 4 shows errors after I deleted some part of locali
+      >
+      > White dots show area which has design rule problems
+
+
+      <p float="left">       
+        <img src="https://github.com/user-attachments/assets/9778e618-cca5-46dc-ad1b-8a3a92f895e6" alt="Alt text" width="400" />        
+        <img src="https://github.com/user-attachments/assets/217107f6-93e1-49aa-8f45-d49b16237c0b" alt="Alt text" width="400" />
+     
+      </p>   
+      > DRC error seen from tckon window
+      
+      ![image](https://github.com/user-attachments/assets/d06c56cd-15f5-4bfd-967c-648a8d8d9106)
+
+      > To know logical function of the design, we need to extract the SPICE and do simulation in ngspice tool
+      >
+      > To extract SPICE, the following steps are done
+      >
+      ```bash
+      #Check directory
+      pwd
+      #Create an extraction file
+      extract all
+      #Use ext file to create SPICE file for use in ngspice tool(we extract parasitic capacitance first)
+      ext2spice cthresh 0 rthresh 0
+      #finishing conversion
+      ext2spice
+      ```
+      > ext file created
+      
+      ![image](https://github.com/user-attachments/assets/3a013083-f2a9-4b7f-b18a-d5d2ddbf75ac)
+      
+      > Tkcon window
+      
+      ![image](https://github.com/user-attachments/assets/6facc125-8407-4acb-bd6f-6a62487c1078)
+      
+      > ls -ltr showing newly created files in vsdstdcelldesign folder
+
+      ![image](https://github.com/user-attachments/assets/293e29c6-f5b0-4447-9362-fa38be580b88)
+
+      > Opening the spice file to see contents
+      
+      ```bash
+      vim sky130_inv.spice
+      ```
+      ![image](https://github.com/user-attachments/assets/71808723-e248-4233-9709-debf701dadff)
+
       
 - <details> 
-  <summary><strong>SKY130_D3_SK3 - Sky130 Tech File Labs</strong></summary>
+  <summary><strong>Sky130 Tech File Labs</strong></summary>
   
    - <details>
-      <summary><strong>SKY_L1 - Lab steps to create final SPICE deck using Sky130 tech</strong></summary>
+      <summary><strong>Lab steps to create final SPICE deck using Sky130 tech</strong></summary>
+
+      > In the spice file, check grid size
+      
+      ![image](https://github.com/user-attachments/assets/c934c606-ee7a-45b9-98c4-af20b00a7335)
+
+     
+      > To ensure scaling is proper (grid size shows the dimensions to measurement)
+      >
+      > we change scale to 0.01 u in the spice file and edit the file as shown below
+      >
+      ![image](https://github.com/user-attachments/assets/3fe46d03-6b92-4fc1-bba2-a9bec539e9bc)
+
+      
+   - <details>
+      <summary><strong>Lab steps to characterize inverter using sky130 model files</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L2 - Lab steps to characterize inverter using sky130 model files</strong></summary>
+      <summary><strong>Lab introduction to Magic tool options and DRC rules</strong></summary>      
 
    - <details>
-      <summary><strong>SKY_L3 - Lab introduction to Magic tool options and DRC rules</strong></summary>      
+      <summary><strong> Lab introduction to Sky130 pdk's and steps to download labs</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L4 - Lab introduction to Sky130 pdk's and steps to download labs</strong></summary>
+      <summary><strong>  Lab introduction to Magic and steps to load Sky130 tech-rules</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L5 - Lab introduction to Magic and steps to load Sky130 tech-rules</strong></summary>
-
-   - <details>
-      <summary><strong>SKY_L6 - Lab exercise to fix poly.9 error in Sky130 tech-file</strong></summary>   
+      <summary><strong>  Lab exercise to fix poly.9 error in Sky130 tech-file</strong></summary>   
 
    - <details>
       <summary><strong>SKY_L7 - Lab exercise to implement poly resistor spacing to diff and tap</strong></summary>
