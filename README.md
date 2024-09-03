@@ -979,7 +979,23 @@ Another important interface between Functon and hardware is the RTL language. Th
    - <details>
       <summary><strong>  Lab challenge exercise to describe DRC error as geometrical construct</strong></summary>
       
+      > Figure out how to describe the area as a geometrical constuct, similar to Calibre error check
       >
+      > After all the boolean operators are applied in sequence, what ever leftover is a DRC error
+      >
+      > Way to tie DRC section of the tech file: uses CIFMAXWIDTH
+      >
+      > checks layers exactly as how they appear in GDS
+      >
+      > CIFMAXWIDTH uses width value 0
+      >
+      > 
+      ![image](https://github.com/user-attachments/assets/03715096-793d-4a3a-b813-020e0beded33)
+     
+      ![image](https://github.com/user-attachments/assets/6ae95417-286e-4892-a3a7-b2088dc7ba8d)
+
+      ![image](https://github.com/user-attachments/assets/946f2624-510a-4b63-ab05-0264d64bfdfa)
+     
 
    - <details>
       <summary><strong> Lab challenge to find missing or incorrect rules and fix them</strong></summary>   
