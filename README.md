@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/681cb162-33b4-4598-a7f3-aec822b44c7c)# NASSCOM VSD Soc Design Program
+# NASSCOM VSD Soc Design Program
 > This repo includes notes from lectures and discussions and visual and textual documentation of Lab exercises covered in the 14 day workshop
 
 
@@ -1068,11 +1068,12 @@ Another important interface between Functon and hardware is the RTL language. Th
 
    - <details>
       <summary><strong> Lab steps to convert magic layout to std cell LEF</strong></summary>
-    
+ 
+      
       > Checking if width of standard cell is odd multiple of xpitch
       >
       > x pitch = 0.46 (from tracks.info file)
-      >
+      > 
       > width of standard cell = 1.380 = 3 * 0.46 ==> odd multiple
       >
       ![image](https://github.com/user-attachments/assets/81dacad7-1d17-4534-9f02-aa3516052176)
