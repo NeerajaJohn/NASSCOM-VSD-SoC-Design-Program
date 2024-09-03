@@ -813,7 +813,29 @@ Another important interface between Functon and hardware is the RTL language. Th
       >
       ![image](https://github.com/user-attachments/assets/3fe46d03-6b92-4fc1-bba2-a9bec539e9bc)
 
-      
+      > Now we can run this file using ngspice tool(install ngspice using sudo apt install ngspice)
+      ```bash
+      vsduser@vsdquadron:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ ngspice sky130_inv.spice
+
+      ngspice 1 -> plot y time a
+      ```
+      ![image](https://github.com/user-attachments/assets/1edd294c-993d-45b8-98c6-ca1c28dd7fe5)
+
+      > Generated plot
+      >
+      ![image](https://github.com/user-attachments/assets/1176e4b5-d691-4e55-877c-7d7e2ca98089)
+
+      >Calculate rise time
+      >
+      >20% of 3.3 V = 0.66V
+      >
+      >80% of 3.3V = 2.64V
+      >
+      ![image](https://github.com/user-attachments/assets/9a91a2aa-ac0c-47a6-a7d8-eb0f9f48bb6c)
+
+      > Rise Time = 2.25224e-09 - 2.18587e-09
+      >
+      > = 6.637e-11s = 66.37ps
    - <details>
       <summary><strong>Lab steps to characterize inverter using sky130 model files</strong></summary>
 
@@ -830,13 +852,13 @@ Another important interface between Functon and hardware is the RTL language. Th
       <summary><strong>  Lab exercise to fix poly.9 error in Sky130 tech-file</strong></summary>   
 
    - <details>
-      <summary><strong>SKY_L7 - Lab exercise to implement poly resistor spacing to diff and tap</strong></summary>
+      <summary><strong> Lab exercise to implement poly resistor spacing to diff and tap</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L8 - Lab challenge exercise to describe DRC error as geometrical construct</strong></summary>
+      <summary><strong>  Lab challenge exercise to describe DRC error as geometrical construct</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L9 - Lab challenge to find missing or incorrect rules and fix them</strong></summary>   
+      <summary><strong> Lab challenge to find missing or incorrect rules and fix them</strong></summary>   
       
 ### Sky130 Day 4 - Pre-layout timing analysis and importance of good clock tree
 
@@ -892,16 +914,16 @@ Another important interface between Functon and hardware is the RTL language. Th
       <summary><strong>SKY_L1 - Clock tree routing and buffering using H-Tree algorithm</strong></summary>
         
    - <details>
-      <summary><strong>SKY_L2 - Crosstalk and clock net shielding</strong></summary>
+      <summary><strong> Crosstalk and clock net shielding</strong></summary>
 
    - <details>
-      <summary><strong>SKY_L3 - Lab steps to run CTS using TritonCTS</strong></summary>
+      <summary><strong> Lab steps to run CTS using TritonCTS</strong></summary>
         
    - <details>
-      <summary><strong>SKY_L4 - Lab steps to verify CTS runs</strong></summary>
+      <summary><strong>  Lab steps to verify CTS runs</strong></summary>
 
 - <details>
-  <summary><strong>SKY130_D4_SK4 - Timing analysis with real clocks using openSTA</strong></summary>
+  <summary><strong>  Timing analysis with real clocks using openSTA</strong></summary>
   
    - <details>
       <summary><strong>SKY_L1 - Setup timing analysis using real clocks</strong></summary>
