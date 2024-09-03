@@ -1,4 +1,4 @@
-# NASSCOM VSD Soc Design Program
+![image](https://github.com/user-attachments/assets/681cb162-33b4-4598-a7f3-aec822b44c7c)# NASSCOM VSD Soc Design Program
 > This repo includes notes from lectures and discussions and visual and textual documentation of Lab exercises covered in the 14 day workshop
 
 
@@ -1027,11 +1027,14 @@ Another important interface between Functon and hardware is the RTL language. Th
 
 ### Sky130 Day 4 - Pre-layout timing analysis and importance of good clock tree
 
- <details>
-   Timing modelling using delay tables
+- <details>
+  <summary><strong> Timing modelling using delay tables</strong></summary>
+  
+   - <details>
+      <summary><strong> Lab steps to convert grid info to track info</strong></summary>
         
-   -  Open custom inverter layout
-     
+      > Open custom inverter layout
+           
       > open sky130_inv.mag in magic using sky130A.tech file
       >
       ```bash
@@ -1042,17 +1045,69 @@ Another important interface between Functon and hardware is the RTL language. Th
       >
       > 1. The input and output ports must lie on the intersection of horizontal and vertical tracks
       > 2. The width of standard cell must be in odd multiples of track pitch
-      > 3. Height should be odd multiple of vertical diemension of track pitch
+      > 3. Height should be even multiple of vertical diemension of track pitch
       
 
       ```bash
-      magic -T sky130A.tech sky130_inv.mag &
+      vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd$ less tracks.info
+      ```
+       
+      ![image](https://github.com/user-attachments/assets/6246fd32-ad81-47d0-97a4-024277bf9a79)
+
+      > Type the following commands in tkcon
+      ```bash
+      help grid
+
+      grid 0.46um 0.34um 0.23um 0.17um
+      ```
+      ![image](https://github.com/user-attachments/assets/e8c8d5ff-ec06-4a0f-b005-11f52fa27068)
+
+      > Check if input and output are on horizontal and vertical tracks' intersection
+      >
+      ![image](https://github.com/user-attachments/assets/4890cf91-da77-453a-84c7-633e46c52381)
+
+   - <details>
+      <summary><strong> Lab steps to convert magic layout to std cell LEF</strong></summary>
+    
+      > Checking if width of standard cell is odd multiple of xpitch
+      >
+      > x pitch = 0.46 (from tracks.info file)
+      >
+      > width of standard cell = 1.380 = 3 * 0.46 ==> odd multiple
+      >
+      ![image](https://github.com/user-attachments/assets/81dacad7-1d17-4534-9f02-aa3516052176)
+
+      > Height of std cell = 2.720 = 8 * 0.34(vertical track pitch)
+      >
+      > Condition 3 satisfied
+      >
+      ![image](https://github.com/user-attachments/assets/658c0c56-9a75-4c7a-9a89-f2cb163620cd)
+
+      > To convert labels to ports
+      >
+      > Select port --> Edit menu --> text --> Fill in reqd data
+      >
+      ![image](https://github.com/user-attachments/assets/1dbd84b8-0bfc-4240-a28c-7012e5b9f0af)
+
+      REf: ![https://github.com/nickson-jose/vsdstdcelldesign](https://github.com/nickson-jose/vsdstdcelldesign)
+
+      > Give custom name and save before extracting LEF file
+      >
+      ```bash
+      save sky130_vsdinv.mag
       ```
       
-      [image](https://github.com/user-attachments/assets/6246fd32-ad81-47d0-97a4-024277bf9a79)
+      ![image](https://github.com/user-attachments/assets/6ae3683e-8c83-404d-a257-d283d0f0b050)
       
-
+      > Open the new inverter
+      ```bash
+      vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ magic -T sky130A.tech sky130_stdinv.mag &
+      ```
+      > Extract lef file and open it
+      >
+      ![image](https://github.com/user-attachments/assets/d9e1759f-9047-4eeb-9e75-4fb26b018fd9)
       
+     
 
 
       
