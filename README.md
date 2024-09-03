@@ -1174,5 +1174,6 @@ Another important interface between Functon and hardware is the RTL language. Th
       > Need to see if by inserting inverter with modified parameter can change the results(area and time)
       >
       > 
+      ![image](https://github.com/user-attachments/assets/a7059509-0c80-4bbf-8d95-20d266857917)
       
       
