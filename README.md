@@ -987,17 +987,69 @@ Another important interface between Functon and hardware is the RTL language. Th
       >
       > checks layers exactly as how they appear in GDS
       >
-      > CIFMAXWIDTH uses width value 0
+      > cifmaxwidth uses width value 0
       >
       > 
       ![image](https://github.com/user-attachments/assets/03715096-793d-4a3a-b813-020e0beded33)
-     
+      ### Incorrectly implemented difftap.5 rule
+      > Open difftap.mag and try to find out and add missing rule
+      
+      ![image](https://github.com/user-attachments/assets/40b8a334-a52e-4caa-8e78-224fe4f8ce9b)
+      > difftap.5 rule : min tap bound = 0.40, but given in difftap.mag layout = 0.21, still no error
+      ![image](https://github.com/user-attachments/assets/35638a29-845e-48f2-8f11-a8268d023fd6)
+      ![image](https://github.com/user-attachments/assets/f2b47419-2245-477d-8674-aced8406cf9b)
+      > Found missing rules and entered them
+      >
+      ![image](https://github.com/user-attachments/assets/5b8a1596-0448-4996-8c5c-cc423475039a)
+      > Loaded tech file and checked drc again; Errors appeared
+      >
+      ![image](https://github.com/user-attachments/assets/be8caa42-ba6c-4789-819c-3c51c1462c8f)
+      >Redraw the diff-sub-diff junction obeying rules
+      >
+      >checked for error and no drc errors found
+
+      ![image](https://github.com/user-attachments/assets/7cf7b909-0aed-4caa-9435-ed61b39aa82c)
+
+
+
+   - <details>
+      <summary><strong> Lab challenge to find missing or incorrect rules and fix them</strong></summary>        
       ![image](https://github.com/user-attachments/assets/6ae95417-286e-4892-a3a7-b2088dc7ba8d)
 
       ![image](https://github.com/user-attachments/assets/946f2624-510a-4b63-ab05-0264d64bfdfa)
-     
+      > After the above edits in tech file, the file is loaded and drc is checked again. This time, the error is correctly reported
+      >
+      ![image](https://github.com/user-attachments/assets/898d0ccd-8dcd-4adb-b41b-c6720bb2def2)
 
-   - <details>
-      <summary><strong> Lab challenge to find missing or incorrect rules and fix them</strong></summary>   
+      > Error solved in copied nwell region after inserting metal tap contact
+      >
+      ![image](https://github.com/user-attachments/assets/15cea57e-ec2e-499f-9089-8ee5b07b4741)
+
+### Sky130 Day 4 - Pre-layout timing analysis and importance of good clock tree
+
+- <details>
+  Timing modelling using delay tables
+  
+  -  Open custom inverter layout
+     > open sky130_inv.mag in magic using sky130A.tech file
+     >
+     ```bash
+     magic -T sky130A.tech sky130_inv.mag &
+     ```
+
+     > Conditions/Guidelines :
+     >
+     > 1. The input and output ports must lie on the intersection of horizontal and vertical tracks
+     > 2. The width of standard cell must be in odd multiples of track pitch
+     > 3. Height should be odd multiple of vertical diemension of track pitch
+     >
+     ```bash
+     magic -T sky130A.tech sky130_inv.mag &
+     ```
+     ![image](https://github.com/user-attachments/assets/6246fd32-ad81-47d0-97a4-024277bf9a79)
+
+  
+
+
       
-
+      
