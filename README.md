@@ -1,4 +1,4 @@
-# NASSCOM VSD Soc Design Program
+![image](https://github.com/user-attachments/assets/769c4eca-0779-4733-99d5-060194e173b3)# NASSCOM VSD Soc Design Program
 > This repo includes notes from lectures and discussions and visual and textual documentation of Lab exercises covered in the 14 day workshop
 
 
@@ -614,7 +614,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       <summary><strong> Propagation delay and transition time</strong></summary>
 
 
-### Sky130 Day 3 - Design library cell using Magic Layout and ngspice characterization
+### Design library cell using Magic Layout and ngspice characterization
 
 
 - <details>
@@ -1025,7 +1025,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       >
       ![image](https://github.com/user-attachments/assets/15cea57e-ec2e-499f-9089-8ee5b07b4741)
 
-### Sky130 Day 4 - Pre-layout timing analysis and importance of good clock tree
+### Pre-layout timing analysis and importance of good clock tree
 
 - <details>
   <summary><strong> Timing modelling using delay tables</strong></summary>
@@ -1109,7 +1109,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       ![image](https://github.com/user-attachments/assets/d9e1759f-9047-4eeb-9e75-4fb26b018fd9)
      
       ![image](https://github.com/user-attachments/assets/9993dc2a-3f63-4f95-881f-9b9ffd1bd60c)
-
+         
    - <details>
       <summary><strong>Introduction to timing libs and steps to include new cell in synthesis</strong></summary>  
      
@@ -1136,10 +1136,13 @@ Another important interface between Functon and hardware is the RTL language. Th
       >Modify config.tcl
       >
       ![image](https://github.com/user-attachments/assets/9961f2d8-617b-4e68-96ee-06417b480560)
-
-
+        
+   - <details>
+      <summary><strong> Lab steps to configure synthesis settings to fix slack and include vsdinv</strong></summary>
+     
       > run docker
       >
+      
       ```bash
       vsduser@vsdsquadron:~/Desktop/work/tools/openlane_working_dir/openlane$ docker
 
@@ -1147,7 +1150,7 @@ Another important interface between Functon and hardware is the RTL language. Th
 
       % package require openlane 0.9
 
-      % prep -design picorv32a -tag 02-09_07-24 -overwrite
+      % prep -design picorv32a 
 
       ```
 
@@ -1176,7 +1179,7 @@ Another important interface between Functon and hardware is the RTL language. Th
 
       ```bash
 
-      % prep -design picorv32a -tag 02-09_07-24 -overwrite
+      % prep -design picorv32a -tag 04-09_07-24 -overwrite
             
       set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
 
@@ -1199,8 +1202,9 @@ Another important interface between Functon and hardware is the RTL language. Th
       > screenshot of merged.lef with sky130_vsdinv as MACRO
       ![image](https://github.com/user-attachments/assets/3747fd7f-77a2-4307-9536-606dd11afbac)
 
-      > Now we can run floorplan
+      > #### Now we can run floorplan
       >
+      
       ```bash
       run_floorplan
       ```
@@ -1209,7 +1213,7 @@ Another important interface between Functon and hardware is the RTL language. Th
       > floorplanning unsuccessfull
       ![image](https://github.com/user-attachments/assets/a6b4dd69-035a-4f8f-9a9e-05f3a7a79726)
 
-      > Following floorplan steps one by one
+      > #### Following floorplan steps one by one
       >
       > 
       ```bash
@@ -1219,4 +1223,171 @@ Another important interface between Functon and hardware is the RTL language. Th
       
       tap_decap_or
       ```      
+      ![image](https://github.com/user-attachments/assets/c7b59b10-4211-4c8c-a328-3d1ed311639c)
+     
+      ![image](https://github.com/user-attachments/assets/8ea2b261-6238-47a0-beea-7764e8230f24)
+
+      ![image](https://github.com/user-attachments/assets/d03ae619-7d87-453e-a960-c4bca2bc35cb)
+
+
+      > #### Next is placement
       
+      ```bash
+      run_placement
+      ```
+
+      ![image](https://github.com/user-attachments/assets/3aefc5b2-e45a-4a3e-9a63-72772ed19b81)
+
+      >  Change directory to path containing generated placement def
+      ```bash
+
+      cd designs/picorv32a/runs/04-09_07-24/results/placement/
+      ```
+      
+      > Command to load the placement def in magic tool
+      
+      ```bash
+      magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+      ```
+      ![image](https://github.com/user-attachments/assets/85de2cd6-3aff-4e66-b8ba-cbecc118582d)
+
+     > Zoomed in to see the custom inv standar cells
+     
+     [image](https://github.com/user-attachments/assets/f6ea1fb0-927b-4427-a535-adca7cdb6ea4)
+
+     > Use expand command in tkcon window to see internal connections
+     >
+     ```bash
+     expand
+     ```
+
+     ![image](https://github.com/user-attachments/assets/dcad27b0-54eb-42fa-a56e-7607a05cc749)
+     
+
+- <details>
+  <summary><strong> Timing analysis with ideal clocks using openSTA</strong></summary>
+  
+   - <details>
+      <summary><strong> Lab steps to configure OpenSTA for post-synth timing analysis</strong></summary>
+
+      > Doing run_synthesis again for earlier values of synth startegy and all
+      >
+      > From openlane directory
+      >
+      
+      ```bash
+
+      docker
+    
+      ./flow.tcl -interactive
+
+      package require openlane 0.9
+
+      prep -design picorv32a
+
+      set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+
+      add_lefs -src $lefs
+
+      set ::env(SYNTH_SIZING) 1
+
+      run_synthesis
+      ```
+      ![image](https://github.com/user-attachments/assets/5d822044-557a-43cd-8aa3-1f7896b95b05)
+
+
+      > ### Create my_base.sdc and pre_sta.conf
+
+      ### my_base.sdc in src folder
+      ```tcl
+      create_clock [get_ports $::env(CLOCK_PORT)]  -name $::env(CLOCK_PORT)  -period $::env(CLOCK_PERIOD)
+      set input_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
+      set output_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
+      puts "\[INFO\]: Setting output delay to: $output_delay_value"
+      puts "\[INFO\]: Setting input delay to: $input_delay_value"
+      
+      set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
+      
+      set clk_indx [lsearch [all_inputs] [get_port $::env(CLOCK_PORT)]]
+      #set rst_indx [lsearch [all_inputs] [get_port resetn]]
+      set all_inputs_wo_clk [lreplace [all_inputs] $clk_indx $clk_indx]
+      #set all_inputs_wo_clk_rst [lreplace $all_inputs_wo_clk $rst_indx $rst_indx]
+      set all_inputs_wo_clk_rst $all_inputs_wo_clk
+      
+      
+      # correct resetn
+      set_input_delay $input_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] $all_inputs_wo_clk_rst
+      #set_input_delay 0.0 -clock [get_clocks $::env(CLOCK_PORT)] {resetn}
+      set_output_delay $output_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] [all_outputs]
+      
+      # TODO set this as parameter
+      set_driving_cell -lib_cell $::env(SYNTH_DRIVING_CELL) -pin $::env(SYNTH_DRIVING_CELL_PIN) [all_inputs]
+      set cap_load [expr $::env(SYNTH_CAP_LOAD) / 1000.0]
+      puts "\[INFO\]: Setting load to: $cap_load"
+      set_load  $cap_load [all_outputs]
+
+      ```
+
+      #### pre_sta.conf in openlane folder
+      ```tcl
+      set_cmd_units -time ns -capacitance pF -current mA -voltage V -resistance kOhm -distance um
+
+      read_liberty -max /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib
+      
+      read_liberty -min /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib
+      
+      read_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/05-09_19-26/results/synthesis/picorv32a.synthesis.v
+      
+      link_design picorv32a
+      
+      read_sdc /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/my_base.sdc
+      
+      report_checks -path_delay min_max -fields {slew trans net cap input_pin}
+      report_tns
+      report_wns
+      ```
+  
+      ![image](https://github.com/user-attachments/assets/db3c5463-1cb9-4fe9-b3f8-6f9c8a10114b)
+
+      ![image](https://github.com/user-attachments/assets/599f962f-8c85-41f3-a3a4-d149bcb3ef51)
+
+
+      > #### Run sta in openlane folder
+      >
+      ```bash
+      sta pre_sta.conf
+      ```
+
+      ![image](https://github.com/user-attachments/assets/a88888a5-965b-479c-977a-2148f15b8eb7)
+
+      ![image](https://github.com/user-attachments/assets/748cd443-35b9-4868-b154-ec5d2863629d)
+
+      ![image](https://github.com/user-attachments/assets/ab42e187-db96-4b25-938f-143c73c0e640)
+
+      > Need to choose an optimum value of fanout to reduce the slack
+
+    - <details>
+      <summary><strong> Lab steps to optimize synthesis to reduce setup violations</strong></summary>     
+
+      ```bash
+      prep -design picorv32a -tag 25-03_18-52 -overwrite
+
+      set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+
+      add_lefs -src $lefs
+
+      set ::env(SYNTH_SIZING) 1
+
+      set ::env(SYNTH_MAX_FANOUT) 4
+
+      echo $::env(SYNTH_DRIVING_CELL)
+
+      run_synthesis
+
+      ```
+
+      ![image](https://github.com/user-attachments/assets/315908ab-9b2f-48d7-a3d4-a626c3731b84)
+
+      
+
+                                                                                           
