@@ -1172,8 +1172,22 @@ Another important interface between Functon and hardware is the RTL language. Th
       ![image](https://github.com/user-attachments/assets/6a30f204-864a-4d35-9ea2-a641cb7692aa)
 
       > Need to see if by inserting inverter with modified parameter can change the results(area and time)
-      >
-      > But area has increase from 147712 to 181730( Strategy selected earlier was AREA, now selected DELAY)
+      
+
+      ```bash
+
+      % prep -design picorv32a -tag 02-09_07-24 -overwrite
+            
+      set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+
+      add_lefs -src $lefs
+
+      set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+      set ::env(SYNTH_SIZING) 1
+
+      run_synthesis
+      ```
       ![image](https://github.com/user-attachments/assets/a7059509-0c80-4bbf-8d95-20d266857917)
       
       ![image](https://github.com/user-attachments/assets/0ce38384-5eaf-4822-8007-3824e91276e9)
@@ -1181,8 +1195,28 @@ Another important interface between Functon and hardware is the RTL language. Th
 
       > tns and wns became 0 after seting env(SYNTH_STRATEGY) as DELAY3 and env(SYNTH_SIZING) as 1 after overwriting prep design
       >
-      > area decreases
+      > But area has increase from 147712 to 181730( Strategy selected earlier was AREA, now selected DELAY)
       > screenshot of merged.lef with sky130_vsdinv as MACRO
       ![image](https://github.com/user-attachments/assets/3747fd7f-77a2-4307-9536-606dd11afbac)
+
+      > Now we can run floorplan
+      >
+      ```bash
+      run_floorplan
+      ```
+      ![image](https://github.com/user-attachments/assets/19b1bf4d-7b22-4f69-b79e-4816d3121393)
+ 
+      > floorplanning unsuccessfull
+      ![image](https://github.com/user-attachments/assets/a6b4dd69-035a-4f8f-9a9e-05f3a7a79726)
+
+      > Following floorplan steps one by one
+      >
+      > 
+      ```bash
+      init_floorplan
       
+      place_io
+      
+      tap_decap_or
+      ```      
       
