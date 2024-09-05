@@ -1386,8 +1386,78 @@ Another important interface between Functon and hardware is the RTL language. Th
 
       ```
 
-      ![image](https://github.com/user-attachments/assets/315908ab-9b2f-48d7-a3d4-a626c3731b84)
+      ![image](https://github.com/user-attachments/assets/4506dca7-1f62-4bc0-a3e7-820708aabe6a)
 
+
+      > synth result not good
+      >
       
+      ![image](https://github.com/user-attachments/assets/8b24b356-7876-4d5b-b270-af7aca85d8b2)
 
-                                                                                           
+      > Run sta
+      
+      ![image](https://github.com/user-attachments/assets/3253b4a3-6575-445d-87bd-50615c2d2069)
+                                                                                     
+   - <details>
+      <summary><strong> Lab steps to do basic timing ECO</strong></summary>
+
+      ![image](https://github.com/user-attachments/assets/c64d892d-c0ce-4f7c-a355-95b046bed0d0)
+
+      > OR_2_2 driving 4 (drive strength 2, fanout 4)
+ 
+      ```bash
+
+      report_net -connections _11672_
+
+      help replace_cell
+      
+      replace_cell _14510_ sky130_fd_sc_hd__or3_4
+
+      report_checks -fields {net cap slew input_pins} -digits 4
+      ```
+ 
+      
+      ![image](https://github.com/user-attachments/assets/540735fa-f3d0-4940-8660-79a3dba7dc4d)
+     
+      ![image](https://github.com/user-attachments/assets/c62b5962-60f7-4bcd-aab9-f4278d7f5d67)
+
+
+      ```tcl
+                    0.07    0.00    3.51 v _14510_/C (sky130_fd_sc_hd__or3_2)
+                    0.21    1.04    4.55 v _14510_/X (sky130_fd_sc_hd__or3_2)
+       4    0.01                           _11672_ (net)
+
+      ```
+
+      became
+
+      ```tcl
+                    0.0792    0.0000    3.5212 v _14510_/C (sky130_fd_sc_hd__or3_4)
+                    0.1349    0.6755    4.1967 v _14510_/X (sky130_fd_sc_hd__or3_4)
+      4    0.0089                                _11672_ (net)
+
+      ```
+      > Similarily by reducing slack by replacing overloaded drivers, we can cut significant slack
+ 
+      ```bash
+      % replace_cell _14510_ sky130_fd_sc_hd__or3_4
+
+      % replace_cell _14514_ sky130_fd_sc_hd__or3_4
+
+      % replace_cell _14481_ sky130_fd_sc_hd__or4_4
+
+      % replace_cell _14506_ sky130_fd_sc_hd__or4_4
+
+      ```    
+
+      ![image](https://github.com/user-attachments/assets/59d189ae-afb6-4aab-93a2-9156d9a96901)
+
+      ```bash
+      report_checks -fields {net cap slew input_pins} -digits 4
+      ```
+      > Started from -23.9, reduced upto -22.6
+      >
+      
+      ![image](https://github.com/user-attachments/assets/a2b7442b-3734-4a0f-8658-a9d07fbb85c3)
+
+     
