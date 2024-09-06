@@ -1702,4 +1702,158 @@ Another important interface between Functon and hardware is the RTL language. Th
     - <details>
       <summary><strong> Lab steps to observe impact of bigger CTS buffers on setup and hold timing</strong></summary>
         
+
+###  Final steps for RTL2GDS using tritonRoute and openSTA
            
+
+
+- <details>
+  <summary><strong> Power Distribution Network and routing</strong></summary>
+      
+   - <details>
+      <summary><strong> Lab steps to build power distribution network</strong></summary>   
+     
+      ```bash
+      % run_pdn
+      ```
+       
+      ![image](https://github.com/user-attachments/assets/e86c57f8-e4d3-47cd-89be-d1efbd55630b)
+      ![image](https://github.com/user-attachments/assets/f1d3833e-c17f-4943-bcc7-99d94148a120)
+  
+      > Commands to load PDN def in magic in another terminal
+
+      ```bash
+      # Change directory to path containing generated PDN def
+      
+      cd designs/picorv32a/runs/05-09_19-26/tmp/floorplan/
+      
+      # Command to load the PDN def in magic tool
+      
+      magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 17-pdn.def &
+      
+      ```
+      
+      
+      ![image](https://github.com/user-attachments/assets/0c02a7ce-496c-4bb4-8864-086a23ed40e5)
+      ![image](https://github.com/user-attachments/assets/2f7c40d2-47a8-4d33-ab43-553f89572dd7)
+      ![image](https://github.com/user-attachments/assets/b6667bbe-5df1-4828-aea1-65c207bc6037)
+
+   - <details>
+      <summary><strong> Lab steps from power straps to std cell power</strong></summary>
+     
+
+   - <details>
+      <summary><strong> Basics of global and detail routing and configure TritonRoute</strong></summary>
+      
+      > #### Perfrom detailed routing using TritonRoute and explore the routed layout.
+
+      Command to perform routing
+      
+      ```tcl
+      # Check value of 'CURRENT_DEF'
+      echo $::env(CURRENT_DEF)
+      
+      # Check value of 'ROUTING_STRATEGY'
+      echo $::env(ROUTING_STRATEGY)
+      
+      # Command for detailed route using TritonRoute
+      run_routing
+      ```
+
+      ![image](https://github.com/user-attachments/assets/17526f5a-db15-4876-b881-ebd560e0d4c5)
+      ![image](https://github.com/user-attachments/assets/83a68092-7630-4b73-8e18-7c35e70da808)
+      ![image](https://github.com/user-attachments/assets/b7f92dd0-d112-44f2-b45c-d18101bed06b)
+
+      > Load routed def in magic 
+
+      ```bash
+      # Change directory to path containing routed def
+      cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/05-09_19-26/results/routing/
+      
+      # Command to load the routed def in magic tool
+      magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
+      ```
+      ![image](https://github.com/user-attachments/assets/761c3e0c-e32f-4038-9324-da1f127fa084)
+      ![image](https://github.com/user-attachments/assets/78d6d55b-7e1f-44bd-bd7b-fa4c2fb850c3)
+      ![image](https://github.com/user-attachments/assets/703e8698-ccdb-4afd-824f-06eb10cd2474)
+
+      >Expanded view  after detailed routing
+            
+      ![image](https://github.com/user-attachments/assets/64559c04-30c6-4298-a8f0-60bc2fdd2b11)
+
+- <details>
+  <summary><strong>TritonRoute Features</strong></summary>
+
+   - <details>
+      <summary><strong> ritonRoute feature 1 - Honors pre-processed route guides</strong></summary>
+
+
+      >Fast route guide present in `/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/05-09_19-26/tmp/routing` directory
+      
+     
+      ![image](https://github.com/user-attachments/assets/d5e0107b-dc17-4034-8d9a-8c4b6f18d8dc)
+
+     
+   - <details>
+      <summary><strong> Routing topology algorithm and final files list post-route</strong></summary>      
+      > #### Post-Route parasitic extraction using SPEF extractor.
+
+      Commands for SPEF extraction using external tool
+      
+      ```bash
+      # Change directory
+      cd Desktop/work/tools/openlane_working_dir/openlane/scripts/spef_extractor
+      
+      # Command extract spef
+      python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/05-09_19-26/results/routing/picorv32a.def /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/05-09_19-26/tmp/merged.lef 
+      ```
+      ![image](https://github.com/user-attachments/assets/35822613-4443-47a1-ace9-eb8deda9dc5c)
+      ![image](https://github.com/user-attachments/assets/ba446ded-9d33-4ed9-a542-4d0c8fc19eed)
+
+
+      > ####  Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
+
+      Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrated OpenSTA in OpenROAD
+
+      ```tcl
+      # Command to run OpenROAD tool
+      openroad
+      
+      # Reading lef file
+      read_lef /openLANE_flow/designs/picorv32a/runs/05-09_19-26/tmp/merged.lef
+      
+      # Reading def file
+      read_def /openLANE_flow/designs/picorv32a/runs/05-09_19-26/results/routing/picorv32a.def
+      
+      # Creating an OpenROAD database to work with
+      write_db pico_route.db
+      
+      # Loading the created database in OpenROAD
+      read_db pico_route.db
+      
+      # Read netlist post CTS
+      read_verilog /openLANE_flow/designs/picorv32a/runs/05-09_19-26/results/synthesis/picorv32a.synthesis_preroute.v
+      
+      # Read library for design
+      read_liberty $::env(LIB_SYNTH_COMPLETE)
+      
+      # Link design and library
+      link_design picorv32a
+      
+      # Read in the custom sdc we created
+      read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+      
+      # Setting all cloks as propagated clocks
+      set_propagated_clock [all_clocks]
+      
+      # Read SPEF
+      read_spef /openLANE_flow/designs/picorv32a/runs/05-09_19-26/results/routing/picorv32a.spef
+      
+      # Generating custom timing report
+      report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+      
+      # Exit to OpenLANE flow
+      exit
+      ```
+      ![image](https://github.com/user-attachments/assets/a97165b4-0286-401e-bd8d-80d346be1e24)
+      ![image](https://github.com/user-attachments/assets/623f2618-6413-45d8-8e09-179aea7d9bde)
