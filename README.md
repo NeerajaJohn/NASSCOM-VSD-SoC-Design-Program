@@ -1745,9 +1745,10 @@ Another important interface between Functon and hardware is the RTL language. Th
    - <details>
       <summary><strong> Basics of global and detail routing and configure TritonRoute</strong></summary>
       
-      > #### Perfrom detailed routing using TritonRoute and explore the routed layout.
+      
+      > Perfrom detailed routing using TritonRoute and explore the routed layout.
 
-      Command to perform routing
+      > Command to perform routing
       
       ```tcl
       # Check value of 'CURRENT_DEF'
@@ -1785,7 +1786,7 @@ Another important interface between Functon and hardware is the RTL language. Th
   <summary><strong>TritonRoute Features</strong></summary>
 
    - <details>
-      <summary><strong> ritonRoute feature 1 - Honors pre-processed route guides</strong></summary>
+      <summary><strong> TritonRoute feature 1 - Honors pre-processed route guides</strong></summary>
 
 
       >Fast route guide present in `/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/05-09_19-26/tmp/routing` directory
@@ -1805,15 +1806,15 @@ Another important interface between Functon and hardware is the RTL language. Th
       cd Desktop/work/tools/openlane_working_dir/openlane/scripts/spef_extractor
       
       # Command extract spef
-      python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/05-09_19-26/results/routing/picorv32a.def /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/05-09_19-26/tmp/merged.lef 
+      python3 main.py -l merged.lef -d picorv32a.def 
       ```
       ![image](https://github.com/user-attachments/assets/35822613-4443-47a1-ace9-eb8deda9dc5c)
       ![image](https://github.com/user-attachments/assets/ba446ded-9d33-4ed9-a542-4d0c8fc19eed)
 
 
-      > ####  Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
+      >  Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
 
-      Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrated OpenSTA in OpenROAD
+      > Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrated OpenSTA in OpenROAD
 
       ```tcl
       # Command to run OpenROAD tool
