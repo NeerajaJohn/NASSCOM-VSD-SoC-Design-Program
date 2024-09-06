@@ -1477,6 +1477,60 @@ Another important interface between Functon and hardware is the RTL language. Th
 
       > Insert this updated netlist to PnR flow. we can use `write_verilog` and overwrite the synthesis netlist , finally exit
       
-      [Uploading image.png…]()
+      ![image](https://github.com/user-attachments/assets/88f196cc-0253-489f-9d19-9a7a6f3b38ea)
 
-      > 
+      
+      > RUn upto placement and cts on the synthesis where wns and tns = 0
+      >
+      ```tcl
+      
+      prep -design picorv32a -tag 04-09_19-26 -overwrite
+      
+      
+      set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+      add_lefs -src $lefs
+      
+      
+      set ::env(SYNTH_STRATEGY) "DELAY 3"
+      
+      
+      set ::env(SYNTH_SIZING) 1
+      
+      
+      run_synthesis
+      
+      
+      init_floorplan
+      
+      place_io
+      
+      tap_decap_or
+      
+      
+      run_placement
+      
+      # Incase getting error
+      unset ::env(LIB_CTS)
+      
+      # With placement done we are now ready to run CTS
+      run_cts
+      ```
+
+      ![image](https://github.com/user-attachments/assets/e2e58355-de4f-4974-afc1-f52ecbe2c17f)
+
+      ![image](https://github.com/user-attachments/assets/aa5f3600-7e2b-4a45-a50c-747dbc63d45c)
+
+      ![image](https://github.com/user-attachments/assets/f91b2ea5-16a2-4a54-9fb5-dd20c328e4cd)
+
+      ![image](https://github.com/user-attachments/assets/5c6ad4d2-9666-49f1-ba7c-5931d0be4d09)
+
+
+      ![image](https://github.com/user-attachments/assets/707069ec-ffb3-4dd6-a76d-6a0754b62da9)
+
+      ![image](https://github.com/user-attachments/assets/79ebc2d8-9651-49ee-a907-47197fa6779c)
+
+      ![image](https://github.com/user-attachments/assets/8a58b2d2-5c3e-4d7e-b07f-13ef8f96c8b3)
+
+      ![image](https://github.com/user-attachments/assets/d7964c22-af8c-4563-9cab-2b731387878e)
+
+      > CTS Successful
