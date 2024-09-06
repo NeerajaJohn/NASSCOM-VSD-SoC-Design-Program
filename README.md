@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/769c4eca-0779-4733-99d5-060194e173b3)# NASSCOM VSD Soc Design Program
+![image](https://github.com/user-attachments/assets/e78800d1-4aad-40ed-af85-7867de47d489)![image](https://github.com/user-attachments/assets/769c4eca-0779-4733-99d5-060194e173b3)# NASSCOM VSD Soc Design Program
 > This repo includes notes from lectures and discussions and visual and textual documentation of Lab exercises covered in the 14 day workshop
 
 
@@ -1460,4 +1460,23 @@ Another important interface between Functon and hardware is the RTL language. Th
       
       ![image](https://github.com/user-attachments/assets/a2b7442b-3734-4a0f-8658-a9d07fbb85c3)
 
+      > Replaced instance
+      >
+      ![image](https://github.com/user-attachments/assets/02e37941-82dc-45e0-8002-53f58072977f)
+
+- <details>
+  <summary><strong> Clock tree synthesis TritonCTS and signal integrity</strong></summary>
+
+   - <details>
+      <summary><strong> Lab steps to run CTS using TritonCTS</strong></summary>  
+
+      > make a copy of the old old netlist
+      >
      
+      ![image](https://github.com/user-attachments/assets/1727d95b-cb53-4fae-aece-d4f9111c75d5)
+
+      > Insert this updated netlist to PnR flow. we can use `write_verilog` and overwrite the synthesis netlist , finally exit
+      
+      [Uploading image.png…]()
+
+      > 
