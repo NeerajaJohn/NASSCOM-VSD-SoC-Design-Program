@@ -1605,3 +1605,101 @@ Another important interface between Functon and hardware is the RTL language. Th
 
       ![image](https://github.com/user-attachments/assets/abced705-b4ca-42d8-98ff-4ffad9311fdf)
       
+- <details>
+  <summary><strong>  Timing analysis with real clocks using openSTA</strong></summary>
+
+   - <details>
+      <summary><strong> Lab steps to analyze timing with real clocks using OpenSTA</strong></summary>
+     
+      > #### Explore post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST'.
+
+      > Commands to be run in OpenLANE flow to do OpenROAD timing analysis after changing `CTS_CLK_BUFFER_LIST`
+      
+      ```bash
+      
+      # Checking current value of 'CTS_CLK_BUFFER_LIST'
+      echo $::env(CTS_CLK_BUFFER_LIST)
+      
+      # Removing 'sky130_fd_sc_hd__clkbuf_1' from the list
+      set ::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
+      
+      # Checking current value of 'CTS_CLK_BUFFER_LIST'
+      echo $::env(CTS_CLK_BUFFER_LIST)
+      
+      # Checking current value of 'CURRENT_DEF'
+      echo $::env(CURRENT_DEF)
+      
+      # Setting def as placement def
+      set ::env(CURRENT_DEF) /openLANE_flow/designs/picorv32a/runs/05-09_19-26/results/placement/picorv32a.placement.def
+      
+      # Run CTS again
+      run_cts
+      
+      # Checking current value of 'CTS_CLK_BUFFER_LIST'
+      echo $::env(CTS_CLK_BUFFER_LIST)
+      
+      # Command to run OpenROAD tool
+      openroad
+      
+      # Reading lef file
+      read_lef /openLANE_flow/designs/picorv32a/runs/05-09_19-26/tmp/merged.lef
+      
+      # Reading def file
+      read_def /openLANE_flow/designs/picorv32a/runs/05-09_19-26/results/cts/picorv32a.cts.def
+      
+      # Creating an OpenROAD database to work with
+      write_db pico_cts1.db
+      
+      # Loading the created database in OpenROAD
+      read_db pico_cts.db
+      
+      # Read netlist post CTS
+      read_verilog /openLANE_flow/designs/picorv32a/runs/05-09_19-26/results/synthesis/picorv32a.synthesis_cts.v
+      
+      # Read library for design
+      read_liberty $::env(LIB_SYNTH_COMPLETE)
+      
+      # Link design and library
+      link_design picorv32a
+      
+      # Read in the custom sdc we created
+      read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+      
+      # Setting all cloks as propagated clocks
+      set_propagated_clock [all_clocks]
+      
+      # Generating custom timing report
+      report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+      
+      # Report hold skew
+      report_clock_skew -hold
+      
+      # Report setup skew
+      report_clock_skew -setup
+      
+      # Exit to OpenLANE flow
+      exit
+      
+      # Checking current value of 'CTS_CLK_BUFFER_LIST'
+      echo $::env(CTS_CLK_BUFFER_LIST)
+      
+      # Inserting 'sky130_fd_sc_hd__clkbuf_1' to first index of list
+      set ::env(CTS_CLK_BUFFER_LIST) [linsert $::env(CTS_CLK_BUFFER_LIST) 0 sky130_fd_sc_hd__clkbuf_1]
+      
+      # Checking current value of 'CTS_CLK_BUFFER_LIST'
+      echo $::env(CTS_CLK_BUFFER_LIST)
+      ```
+      ![image](https://github.com/user-attachments/assets/d0e00217-1a36-4856-9c61-e1644aefa7e9)
+      ![image](https://github.com/user-attachments/assets/405c3839-fdd9-40f8-8564-4f9dcc753a5e)
+      ![image](https://github.com/user-attachments/assets/e1a3c008-8de8-4fcf-bebd-cc15b8bb63bf)
+      ![image](https://github.com/user-attachments/assets/a5d139cc-00b5-406d-ba11-f1851a195d91)
+      ![image](https://github.com/user-attachments/assets/5cb5edea-6e78-41f4-9a8a-714f0b383407)
+
+
+   - <details>
+      <summary><strong> Lab steps to execute OpenSTA with right timing libraries and CTS assignment</strong></summary>
+
+    - <details>
+      <summary><strong> Lab steps to observe impact of bigger CTS buffers on setup and hold timing</strong></summary>
+        
+           
