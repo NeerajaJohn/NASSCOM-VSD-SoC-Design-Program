@@ -1796,10 +1796,12 @@ Another important interface between Functon and hardware is the RTL language. Th
 
      
    - <details>
-      <summary><strong> Routing topology algorithm and final files list post-route</strong></summary>      
-      > #### Post-Route parasitic extraction using SPEF extractor.
+      <summary><strong> Routing topology algorithm and final files list post-route</strong></summary>   
+ 
+     
+      > Post-Route parasitic extraction using SPEF extractor.
 
-      Commands for SPEF extraction using external tool
+      > Commands for SPEF extraction using external tool
       
       ```bash
       # Change directory
