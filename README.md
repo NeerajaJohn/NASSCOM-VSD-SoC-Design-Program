@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/e78800d1-4aad-40ed-af85-7867de47d489)![image](https://github.com/user-attachments/assets/769c4eca-0779-4733-99d5-060194e173b3)# NASSCOM VSD Soc Design Program
+# NASSCOM VSD Soc Design Program
 > This repo includes notes from lectures and discussions and visual and textual documentation of Lab exercises covered in the 14 day workshop
 
 
