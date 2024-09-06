@@ -1484,36 +1484,37 @@ Another important interface between Functon and hardware is the RTL language. Th
       >
       ```tcl
       
-      prep -design picorv32a -tag 04-09_19-26 -overwrite
+      % prep -design picorv32a -tag 05-09_19-26 -overwrite
       
       
-      set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
-      add_lefs -src $lefs
+      % set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+      
+      % add_lefs -src $lefs
       
       
-      set ::env(SYNTH_STRATEGY) "DELAY 3"
+      % set ::env(SYNTH_STRATEGY) "DELAY 3"
       
       
-      set ::env(SYNTH_SIZING) 1
+      % set ::env(SYNTH_SIZING) 1
       
       
-      run_synthesis
+      % run_synthesis
       
       
-      init_floorplan
+      % init_floorplan
       
-      place_io
+      % place_io
       
-      tap_decap_or
+      % tap_decap_or
       
       
-      run_placement
+      % run_placement
       
-      # Incase getting error
+      # If error
       unset ::env(LIB_CTS)
       
-      # With placement done we are now ready to run CTS
-      run_cts
+      
+      % run_cts
       ```
 
       ![image](https://github.com/user-attachments/assets/e2e58355-de4f-4974-afc1-f52ecbe2c17f)
@@ -1533,4 +1534,74 @@ Another important interface between Functon and hardware is the RTL language. Th
 
       ![image](https://github.com/user-attachments/assets/d7964c22-af8c-4563-9cab-2b731387878e)
 
-      > CTS Successful
+      > CTS Successfull
+
+   - <details>
+      <summary><strong>  Lab steps to verify CTS runs</strong></summary>
+
+      > ### OpenROAD timing analysis with integrated OpenSTA in OpenROAD
+      
+      ```bash
+
+      # Run OpenROAD tool
+      
+      % openroad
+      
+      # Read lef file
+      
+      % read_lef /openLANE_flow/designs/picorv32a/runs/05-09_19-26/tmp/merged.lef
+        
+      # Read def file
+      
+      % read_def /openLANE_flow/designs/picorv32a/runs/05-09_19-26/results/cts/picorv32a.cts.def
+      
+      # Creating an OpenROAD database to work with
+      
+      % write_db pico_cts.db
+      
+      # Loading the created database in OpenROAD
+      
+      % read_db pico_cts.db
+      
+      # Read netlist post CTS
+      
+      % read_verilog /openLANE_flow/designs/picorv32a/runs/05-09_19-26/results/synthesis/picorv32a.synthesis_cts.v
+      
+      # Read library for design
+      
+      % read_liberty $::env(LIB_SYNTH_COMPLETE)
+      
+      # Link design and library
+
+      % link_design picorv32a
+      
+      # Read in the custom sdc we created
+      
+      % read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+      
+      # Setting all cloks as propagated clocks
+      
+      % set_propagated_clock [all_clocks]
+      
+      # Check syntax of 'report_checks' command
+      
+      % help report_checks
+      
+      # Generating custom timing report
+      % report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+      
+      # Exit  OpenLANE flow
+      exit
+      ```
+      ![image](https://github.com/user-attachments/assets/09d31792-c2ff-4455-b23d-dc649c741ff0)
+     
+      ![image](https://github.com/user-attachments/assets/1a06dad1-f877-4e31-9802-fd06dab75fe9)
+     
+      ![image](https://github.com/user-attachments/assets/c85be82a-1693-4cb7-8ad9-8c44629ba9ab)
+
+      ![image](https://github.com/user-attachments/assets/dbd4389b-acf7-4afd-a90f-4dd81ffcb079)
+
+      ![image](https://github.com/user-attachments/assets/10fce962-e7d6-46fd-83c5-ce4789e3e169)
+
+      ![image](https://github.com/user-attachments/assets/abced705-b4ca-42d8-98ff-4ffad9311fdf)
+      
